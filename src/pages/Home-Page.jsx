@@ -2,7 +2,7 @@ import Header from "../components/header/Header";
 import Banner from "../components/banners.jsx/banner";
 import Freedelivery from "../components/freedelivery/freedelivery";
 import FeaturedProducts from "../components/featured-products/featured-products";
-import ShopWithCategories from "../components/shop-Categories/shop-categories";
+//import ShopWithCategories from "../components/shop-Categories/shop-categories";
 import BestProducts from "../components/best-products/best-products";
 import NewAppleBanner from "../components/new-apple-banners/new-apple-banner";
 import FlashProducts from "../components/flash-Products/flash-products";
@@ -15,7 +15,6 @@ function HomePage() {
             <Banner />
             <Freedelivery />
             <FeaturedProducts/>
-            <ShopWithCategories/>
             <BestProducts/>
             <NewAppleBanner/>
             <FlashProducts/>
