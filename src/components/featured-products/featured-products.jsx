@@ -6,6 +6,7 @@ import { FiEye } from "react-icons/fi";
 import { FaStar } from "react-icons/fa6";
 import { useState, useEffect } from "react";
 import { Element } from "react-scroll";
+import { OrbitProgress } from "react-loading-indicators";
 function FeaturedProducts() {
     const [activeCategory, setActiveCategory] = useState("All Product");
     const [allProducts, setAllProducts] = useState([]);
@@ -27,10 +28,10 @@ function FeaturedProducts() {
     const laptops = allProducts.filter((product) => product.category === "laptops");
     const tablets = allProducts.filter((product) => product.category === "tablets");
     const mobileAccessories = allProducts.filter((product) => product.category === "mobile-accessories").slice(0, 10);
-    const allElectroProducts = [...smartPhones.sort((a,b) => b.price - a.price).slice(0,3), 
-        ...laptops.sort((a,b) => b.price - a.price).slice(0,3),
-        ...tablets.sort((a,b) => b.price - a.price).slice(0,1),
-        ...mobileAccessories.sort((a,b) => b.price - a.price).slice(0,3)
+    const allElectroProducts = [...smartPhones.sort((a, b) => b.price - a.price).slice(0, 3),
+    ...laptops.sort((a, b) => b.price - a.price).slice(0, 3),
+    ...tablets.sort((a, b) => b.price - a.price).slice(0, 1),
+    ...mobileAccessories.sort((a, b) => b.price - a.price).slice(0, 3)
     ];
     /*End Get All Product Data With Api Function*/
     return (
@@ -62,208 +63,214 @@ function FeaturedProducts() {
                                 </div>
                             </ul>
                         </div>
-                        <div className="flex flex-wrap gap-4 mt-6 all-featured-products">
-                            {activeCategory === "All Product" ?
-                                <>
-                                    {allElectroProducts.map((product, index) => {
-                                        return (
-                                            <div className="col-product w-[234px] h-[320px] rounded-[3px] p-3" key={product.id}>
-                                                <div className="all-images w-[202px] h-[172px] relative mb-5">
-                                                    <img src={product.images[0]} alt="product-img" className="object-contain w-full h-full" />
-                                                    <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full gap-2 h-c-v-icons">
-                                                        <div className="col-heart w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
-                                                            <FaRegHeart className="w-5 h-5 text-black" />
-                                                        </div>
-                                                        <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
-                                                            <FiShoppingCart className="w-5 h-5 text-black" />
-                                                        </div>
-                                                        <div className="col-view  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
-                                                            <FiEye className="w-5 h-5 text-black" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="flex flex-col gap-2 information-product">
-                                                    <div className="flex items-center gap-1 all-stars-content">
-                                                        <div className="flex all-stars">
-                                                            <FaStar className="w-4 h-4 text-primary500" />
-                                                            <FaStar className="w-4 h-4 text-primary500" />
-                                                            <FaStar className="w-4 h-4 text-primary500" />
-                                                            <FaStar className="w-4 h-4 text-primary500" />
-                                                            <FaStar className="w-4 h-4 text-primary500" />
-                                                        </div>
-                                                        <p className="text-xs p-rate text-gray500">{`(${product.rating})`}</p>
-                                                    </div>
-                                                    <p className="text-sm title-product text-gray900">{product.title}</p>
-                                                    <span className="text-sm font-semibold price-product text-secondary500">{`₹${product.price}`}</span>
-                                                </div>
-                                            </div>
-                                        )
-                                    })}
-                                </>
-                                :
-                                ""
-                            }
-                            {activeCategory === "Smart Phone" ?
-                                <>
-                                    {smartPhones.map((product, index) => {
-                                        return (
-                                            <div className="col-product w-[234px] h-[320px] rounded-[3px] p-3" key={product.id}>
-                                                <div className="all-images w-[202px] h-[172px] relative mb-5">
-                                                    <img src={product.images[0]} alt="product-img" className="object-contain w-full h-full" />
-                                                    <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full gap-2 h-c-v-icons">
-                                                        <div className="col-heart w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
-                                                            <FaRegHeart className="w-5 h-5 text-black" />
-                                                        </div>
-                                                        <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
-                                                            <FiShoppingCart className="w-5 h-5 text-black" />
-                                                        </div>
-                                                        <div className="col-view  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
-                                                            <FiEye className="w-5 h-5 text-black" />
+                        {allProducts.length === 0 ?
+                            <div className="col-loading w-full min-h-[400px] flex justify-center items-center">
+                                <OrbitProgress color="#FA8232" size="medium" text="" textColor="" />
+                            </div>
+                            :
+                            <div className="flex flex-wrap gap-4 mt-6 all-featured-products">
+                                {activeCategory === "All Product" ?
+                                    <>
+                                        {allElectroProducts.map((product, index) => {
+                                            return (
+                                                <div className="col-product w-[234px] h-[320px] rounded-[3px] p-3" key={product.id}>
+                                                    <div className="all-images w-[202px] h-[172px] relative mb-5">
+                                                        <img src={product.images[0]} alt="product-img" className="object-contain w-full h-full" />
+                                                        <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full gap-2 h-c-v-icons">
+                                                            <div className="col-heart w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
+                                                                <FaRegHeart className="w-5 h-5 text-black" />
+                                                            </div>
+                                                            <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
+                                                                <FiShoppingCart className="w-5 h-5 text-black" />
+                                                            </div>
+                                                            <div className="col-view  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
+                                                                <FiEye className="w-5 h-5 text-black" />
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div className="flex flex-col gap-2 information-product">
-                                                    <div className="flex items-center gap-1 all-stars-content">
-                                                        <div className="flex all-stars">
-                                                            <FaStar className="w-4 h-4 text-primary500" />
-                                                            <FaStar className="w-4 h-4 text-primary500" />
-                                                            <FaStar className="w-4 h-4 text-primary500" />
-                                                            <FaStar className="w-4 h-4 text-primary500" />
-                                                            <FaStar className="w-4 h-4 text-primary500" />
+                                                    <div className="flex flex-col gap-2 information-product">
+                                                        <div className="flex items-center gap-1 all-stars-content">
+                                                            <div className="flex all-stars">
+                                                                <FaStar className="w-4 h-4 text-primary500" />
+                                                                <FaStar className="w-4 h-4 text-primary500" />
+                                                                <FaStar className="w-4 h-4 text-primary500" />
+                                                                <FaStar className="w-4 h-4 text-primary500" />
+                                                                <FaStar className="w-4 h-4 text-primary500" />
+                                                            </div>
+                                                            <p className="text-xs p-rate text-gray500">{`(${product.rating})`}</p>
                                                         </div>
-                                                        <p className="text-xs p-rate text-gray500">{`(${product.rating})`}</p>
-                                                    </div>
-                                                    <p className="text-sm title-product text-gray900">{product.title}</p>
-                                                    <span className="text-sm font-semibold price-product text-secondary500">{`₹${product.price}`}</span>
-                                                </div>
-                                            </div>
-                                        )
-                                    })}
-                                </>
-                                :
-                                ""
-                            }
-                            {activeCategory === "Laptop" ?
-                                <>
-                                    {laptops.map((product, index) => {
-                                        return (
-                                            <div className="col-product w-[234px] h-[320px] rounded-[3px] p-3" key={product.id}>
-                                                <div className="all-images w-[202px] h-[172px] relative mb-5">
-                                                    <img src={product.images[0]} alt="product-img" className="object-contain w-full h-full" />
-                                                    <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full gap-2 h-c-v-icons">
-                                                        <div className="col-heart w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
-                                                            <FaRegHeart className="w-5 h-5 text-black" />
-                                                        </div>
-                                                        <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
-                                                            <FiShoppingCart className="w-5 h-5 text-black" />
-                                                        </div>
-                                                        <div className="col-view  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
-                                                            <FiEye className="w-5 h-5 text-black" />
-                                                        </div>
+                                                        <p className="text-sm title-product text-gray900">{product.title}</p>
+                                                        <span className="text-sm font-semibold price-product text-secondary500">{`₹${product.price}`}</span>
                                                     </div>
                                                 </div>
-                                                <div className="flex flex-col gap-2 information-product">
-                                                    <div className="flex items-center gap-1 all-stars-content">
-                                                        <div className="flex all-stars">
-                                                            <FaStar className="w-4 h-4 text-primary500" />
-                                                            <FaStar className="w-4 h-4 text-primary500" />
-                                                            <FaStar className="w-4 h-4 text-primary500" />
-                                                            <FaStar className="w-4 h-4 text-primary500" />
-                                                            <FaStar className="w-4 h-4 text-primary500" />
-                                                        </div>
-                                                        <p className="text-xs p-rate text-gray500">{`(${product.rating})`}</p>
-                                                    </div>
-                                                    <p className="text-sm title-product text-gray900">{product.title}</p>
-                                                    <span className="text-sm font-semibold price-product text-secondary500">{`₹${product.price}`}</span>
-                                                </div>
-                                            </div>
-                                        )
-                                    })}
-                                </>
-                                :
-                                ""
-                            }
-                            {activeCategory === "tablets" ?
-                                <>
-                                    {tablets.map((product, index) => {
-                                        return (
-                                            <div className="col-product w-[234px] h-[320px] rounded-[3px] p-3" key={product.id}>
-                                                <div className="all-images w-[202px] h-[172px] relative mb-5">
-                                                    <img src={product.images[0]} alt="product-img" className="object-contain w-full h-full" />
-                                                    <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full gap-2 h-c-v-icons">
-                                                        <div className="col-heart w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
-                                                            <FaRegHeart className="w-5 h-5 text-black" />
-                                                        </div>
-                                                        <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
-                                                            <FiShoppingCart className="w-5 h-5 text-black" />
-                                                        </div>
-                                                        <div className="col-view  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
-                                                            <FiEye className="w-5 h-5 text-black" />
+                                            )
+                                        })}
+                                    </>
+                                    :
+                                    ""
+                                }
+                                {activeCategory === "Smart Phone" ?
+                                    <>
+                                        {smartPhones.map((product, index) => {
+                                            return (
+                                                <div className="col-product w-[234px] h-[320px] rounded-[3px] p-3" key={product.id}>
+                                                    <div className="all-images w-[202px] h-[172px] relative mb-5">
+                                                        <img src={product.images[0]} alt="product-img" className="object-contain w-full h-full" />
+                                                        <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full gap-2 h-c-v-icons">
+                                                            <div className="col-heart w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
+                                                                <FaRegHeart className="w-5 h-5 text-black" />
+                                                            </div>
+                                                            <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
+                                                                <FiShoppingCart className="w-5 h-5 text-black" />
+                                                            </div>
+                                                            <div className="col-view  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
+                                                                <FiEye className="w-5 h-5 text-black" />
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div className="flex flex-col gap-2 information-product">
-                                                    <div className="flex items-center gap-1 all-stars-content">
-                                                        <div className="flex all-stars">
-                                                            <FaStar className="w-4 h-4 text-primary500" />
-                                                            <FaStar className="w-4 h-4 text-primary500" />
-                                                            <FaStar className="w-4 h-4 text-primary500" />
-                                                            <FaStar className="w-4 h-4 text-primary500" />
-                                                            <FaStar className="w-4 h-4 text-primary500" />
+                                                    <div className="flex flex-col gap-2 information-product">
+                                                        <div className="flex items-center gap-1 all-stars-content">
+                                                            <div className="flex all-stars">
+                                                                <FaStar className="w-4 h-4 text-primary500" />
+                                                                <FaStar className="w-4 h-4 text-primary500" />
+                                                                <FaStar className="w-4 h-4 text-primary500" />
+                                                                <FaStar className="w-4 h-4 text-primary500" />
+                                                                <FaStar className="w-4 h-4 text-primary500" />
+                                                            </div>
+                                                            <p className="text-xs p-rate text-gray500">{`(${product.rating})`}</p>
                                                         </div>
-                                                        <p className="text-xs p-rate text-gray500">{`(${product.rating})`}</p>
-                                                    </div>
-                                                    <p className="text-sm title-product text-gray900">{product.title}</p>
-                                                    <span className="text-sm font-semibold price-product text-secondary500">{`₹${product.price}`}</span>
-                                                </div>
-                                            </div>
-                                        )
-                                    })}
-                                </>
-                                :
-                                ""
-                            }
-                            {activeCategory === "mobileAccessories" ?
-                                <>
-                                    {mobileAccessories.map((product, index) => {
-                                        return (
-                                            <div className="col-product w-[234px] h-[320px] rounded-[3px] p-3" key={product.id}>
-                                                <div className="all-images w-[202px] h-[172px] relative mb-5">
-                                                    <img src={product.images[0]} alt="product-img" className="object-contain w-full h-full" />
-                                                    <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full gap-2 h-c-v-icons">
-                                                        <div className="col-heart w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
-                                                            <FaRegHeart className="w-5 h-5 text-black" />
-                                                        </div>
-                                                        <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
-                                                            <FiShoppingCart className="w-5 h-5 text-black" />
-                                                        </div>
-                                                        <div className="col-view  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
-                                                            <FiEye className="w-5 h-5 text-black" />
-                                                        </div>
+                                                        <p className="text-sm title-product text-gray900">{product.title}</p>
+                                                        <span className="text-sm font-semibold price-product text-secondary500">{`₹${product.price}`}</span>
                                                     </div>
                                                 </div>
-                                                <div className="flex flex-col gap-2 information-product">
-                                                    <div className="flex items-center gap-1 all-stars-content">
-                                                        <div className="flex all-stars">
-                                                            <FaStar className="w-4 h-4 text-primary500" />
-                                                            <FaStar className="w-4 h-4 text-primary500" />
-                                                            <FaStar className="w-4 h-4 text-primary500" />
-                                                            <FaStar className="w-4 h-4 text-primary500" />
-                                                            <FaStar className="w-4 h-4 text-primary500" />
+                                            )
+                                        })}
+                                    </>
+                                    :
+                                    ""
+                                }
+                                {activeCategory === "Laptop" ?
+                                    <>
+                                        {laptops.map((product, index) => {
+                                            return (
+                                                <div className="col-product w-[234px] h-[320px] rounded-[3px] p-3" key={product.id}>
+                                                    <div className="all-images w-[202px] h-[172px] relative mb-5">
+                                                        <img src={product.images[0]} alt="product-img" className="object-contain w-full h-full" />
+                                                        <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full gap-2 h-c-v-icons">
+                                                            <div className="col-heart w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
+                                                                <FaRegHeart className="w-5 h-5 text-black" />
+                                                            </div>
+                                                            <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
+                                                                <FiShoppingCart className="w-5 h-5 text-black" />
+                                                            </div>
+                                                            <div className="col-view  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
+                                                                <FiEye className="w-5 h-5 text-black" />
+                                                            </div>
                                                         </div>
-                                                        <p className="text-xs p-rate text-gray500">{`(${product.rating})`}</p>
                                                     </div>
-                                                    <p className="text-sm title-product text-gray900">{product.title}</p>
-                                                    <span className="text-sm font-semibold price-product text-secondary500">{`₹${product.price}`}</span>
+                                                    <div className="flex flex-col gap-2 information-product">
+                                                        <div className="flex items-center gap-1 all-stars-content">
+                                                            <div className="flex all-stars">
+                                                                <FaStar className="w-4 h-4 text-primary500" />
+                                                                <FaStar className="w-4 h-4 text-primary500" />
+                                                                <FaStar className="w-4 h-4 text-primary500" />
+                                                                <FaStar className="w-4 h-4 text-primary500" />
+                                                                <FaStar className="w-4 h-4 text-primary500" />
+                                                            </div>
+                                                            <p className="text-xs p-rate text-gray500">{`(${product.rating})`}</p>
+                                                        </div>
+                                                        <p className="text-sm title-product text-gray900">{product.title}</p>
+                                                        <span className="text-sm font-semibold price-product text-secondary500">{`₹${product.price}`}</span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        )
-                                    })}
-                                </>
-                                :
-                                ""
-                            }
-                        </div>
+                                            )
+                                        })}
+                                    </>
+                                    :
+                                    ""
+                                }
+                                {activeCategory === "tablets" ?
+                                    <>
+                                        {tablets.map((product, index) => {
+                                            return (
+                                                <div className="col-product w-[234px] h-[320px] rounded-[3px] p-3" key={product.id}>
+                                                    <div className="all-images w-[202px] h-[172px] relative mb-5">
+                                                        <img src={product.images[0]} alt="product-img" className="object-contain w-full h-full" />
+                                                        <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full gap-2 h-c-v-icons">
+                                                            <div className="col-heart w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
+                                                                <FaRegHeart className="w-5 h-5 text-black" />
+                                                            </div>
+                                                            <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
+                                                                <FiShoppingCart className="w-5 h-5 text-black" />
+                                                            </div>
+                                                            <div className="col-view  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
+                                                                <FiEye className="w-5 h-5 text-black" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div className="flex flex-col gap-2 information-product">
+                                                        <div className="flex items-center gap-1 all-stars-content">
+                                                            <div className="flex all-stars">
+                                                                <FaStar className="w-4 h-4 text-primary500" />
+                                                                <FaStar className="w-4 h-4 text-primary500" />
+                                                                <FaStar className="w-4 h-4 text-primary500" />
+                                                                <FaStar className="w-4 h-4 text-primary500" />
+                                                                <FaStar className="w-4 h-4 text-primary500" />
+                                                            </div>
+                                                            <p className="text-xs p-rate text-gray500">{`(${product.rating})`}</p>
+                                                        </div>
+                                                        <p className="text-sm title-product text-gray900">{product.title}</p>
+                                                        <span className="text-sm font-semibold price-product text-secondary500">{`₹${product.price}`}</span>
+                                                    </div>
+                                                </div>
+                                            )
+                                        })}
+                                    </>
+                                    :
+                                    ""
+                                }
+                                {activeCategory === "mobileAccessories" ?
+                                    <>
+                                        {mobileAccessories.map((product, index) => {
+                                            return (
+                                                <div className="col-product w-[234px] h-[320px] rounded-[3px] p-3" key={product.id}>
+                                                    <div className="all-images w-[202px] h-[172px] relative mb-5">
+                                                        <img src={product.images[0]} alt="product-img" className="object-contain w-full h-full" />
+                                                        <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full gap-2 h-c-v-icons">
+                                                            <div className="col-heart w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
+                                                                <FaRegHeart className="w-5 h-5 text-black" />
+                                                            </div>
+                                                            <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
+                                                                <FiShoppingCart className="w-5 h-5 text-black" />
+                                                            </div>
+                                                            <div className="col-view  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
+                                                                <FiEye className="w-5 h-5 text-black" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div className="flex flex-col gap-2 information-product">
+                                                        <div className="flex items-center gap-1 all-stars-content">
+                                                            <div className="flex all-stars">
+                                                                <FaStar className="w-4 h-4 text-primary500" />
+                                                                <FaStar className="w-4 h-4 text-primary500" />
+                                                                <FaStar className="w-4 h-4 text-primary500" />
+                                                                <FaStar className="w-4 h-4 text-primary500" />
+                                                                <FaStar className="w-4 h-4 text-primary500" />
+                                                            </div>
+                                                            <p className="text-xs p-rate text-gray500">{`(${product.rating})`}</p>
+                                                        </div>
+                                                        <p className="text-sm title-product text-gray900">{product.title}</p>
+                                                        <span className="text-sm font-semibold price-product text-secondary500">{`₹${product.price}`}</span>
+                                                    </div>
+                                                </div>
+                                            )
+                                        })}
+                                    </>
+                                    :
+                                    ""
+                                }
+                            </div>
+                        }
                     </div>
                 </div>
             </section>

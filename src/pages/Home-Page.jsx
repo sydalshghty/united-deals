@@ -4,6 +4,7 @@ import Freedelivery from "../components/freedelivery/freedelivery";
 import FeaturedProducts from "../components/featured-products/featured-products";
 //import ShopWithCategories from "../components/shop-Categories/shop-categories";
 import BestProducts from "../components/best-products/best-products";
+import MacbookProBanner from "../components/macbook-pro/macbook-pro-banner";
 import NewAppleBanner from "../components/new-apple-banners/new-apple-banner";
 import FlashProducts from "../components/flash-Products/flash-products";
 import LatestNews from "../components/latest-news/latest-news";
@@ -14,12 +15,13 @@ function HomePage() {
             <Header />
             <Banner />
             <Freedelivery />
-            <FeaturedProducts/>
-            <BestProducts/>
-            <NewAppleBanner/>
-            <FlashProducts/>
-            <LatestNews/>
-            <Footer/>
+            <FeaturedProducts />
+            <NewAppleBanner />
+            <BestProducts />
+            <MacbookProBanner />
+            <FlashProducts />
+            <LatestNews />
+            <Footer />
         </>
     )
 }

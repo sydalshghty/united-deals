@@ -44,9 +44,9 @@ function LatestNews() {
                                 })}
                                 <h2 className="font-sans text-lg font-medium text-gray900">{latest.title}</h2>
                                 <p className="font-sans text-base text-gray500">{latest.description}</p>
-                                <div className="btn-read-more">
-                                    <a href="#Read-more" className="text-sm font-bold uppercase text-primary500">Read more</a>
-                                    <FaArrowRight className="text-primary500" />
+                                <div className="text-white btn-read-more bg-primary500 w-[165px] min-h-[48px] flex justify-center items-center gap-2 cursor-pointer">
+                                    <a href="#Read-more" className="text-sm font-bold text-white uppercase">Read more</a>
+                                    <FaArrowRight className="text-white" />
                                 </div>
                             </div>
                         )

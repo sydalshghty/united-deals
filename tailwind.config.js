@@ -24,7 +24,8 @@ export default {
         danger500: "#EE5858",
         primary100: "#FFE7D6",
         primary500: "#FA8232",
-        gray50: "#F2F4F5"
+        gray50: "#F2F4F5",
+        warning500: "#EBC80C",
       }
     },
   },
