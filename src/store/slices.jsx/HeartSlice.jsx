@@ -5,7 +5,7 @@ const initialState = {
 }
 
 const heartSlice = createSlice({  
-    name: "Heart-Slice",
+    name: "Heart-Slice",    
     initialState,
     reducers: {
         addHeartProduct: (state,action) => {

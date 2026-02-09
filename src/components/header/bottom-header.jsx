@@ -4,13 +4,13 @@ import { AiOutlineUser } from "react-icons/ai";
 import iconunited from "../../assets/Icon.svg";
 import unitedDealsLogo from "../../assets/united-deals-logo.svg";
 import { FiSearch } from "react-icons/fi";
-import { useState } from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import "../header/all-header.css";
 function BottomHeader() {
-    const [showSearch, setShowSearch] = useState(false);
     const numHeartsProducts = useSelector(state => state.heartsProducts.heartsProducts.length);
-    
+    const cartProductsLength = useSelector(state => state.cartProducts.cartProducts.length);
+
     return (
         <nav className="nav-content w-full h-[88px] bg-secondaryColor">
             <div className="container min-w-[100%] h-full flex justify-between items-center">
@@ -25,12 +25,14 @@ function BottomHeader() {
                     </button>
                 </form>
                 <div className="flex items-center gap-6 all-icons">
-                    <div className="flex cursor-pointer col-cart">
-                        <FiShoppingCart className="w-8 h-8 text-whiteColor cart-icon" />
-                        <div className="number-products w-5 h-5 pt-[2px] pb-[2px] bg-whiteColor rounded-full flex justify-center items-center mt-[-4px] ml-[-8px]">
-                            <p className="text-xs font-semibold text-secondary700">2</p>
+                    <Link to={"/cart"} className="cursor-pointer">
+                        <div className="flex cursor-pointer col-cart">
+                            <FiShoppingCart className="w-8 h-8 text-whiteColor cart-icon" />
+                            <div className="number-products w-5 h-5 pt-[2px] pb-[2px] bg-whiteColor rounded-full flex justify-center items-center mt-[-4px] ml-[-8px]">
+                                <p className="text-xs font-semibold text-secondary700">{cartProductsLength}</p>
+                            </div>
                         </div>
-                    </div>
+                    </Link>
                     <div className="flex cursor-pointer col-heart ">
                         <FaRegHeart className="w-8 h-8 text-whiteColor heart-icon" />
                         <div className="number-heart w-5 h-5 pt-[2px] pb-[2px] bg-whiteColor rounded-full flex justify-center items-center mt-[-4px] ml-[-8px]">

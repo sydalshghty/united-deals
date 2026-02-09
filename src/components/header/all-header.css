@@ -3,6 +3,9 @@
     .top-header{
         height: 60px;
     }
+    .center-header{
+        margin-top: 60px;
+    }
     .top-header .col-friday img{
         width: 60px;
     }

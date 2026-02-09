@@ -3,7 +3,6 @@ import bannerImg2 from "../../assets/banner-img-2.png";
 import bannerImg3 from "../../assets/banner-img-3.png";
 import "./banner.css";
 import { Link } from "react-scroll";
-
 function Banner() {
     return (
         <Link 

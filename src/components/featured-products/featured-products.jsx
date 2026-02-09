@@ -7,7 +7,12 @@ import { FaStar } from "react-icons/fa6";
 import { useState, useEffect } from "react";
 import { Element } from "react-scroll";
 import { OrbitProgress } from "react-loading-indicators";
+import { Link } from "react-router-dom";
+import { addToCart } from "../../store/slices.jsx/cart-products-slice";
+import { useDispatch } from "react-redux";
 function FeaturedProducts() {
+    const dispatch = useDispatch();
+
     const [activeCategory, setActiveCategory] = useState("All Product");
     const [allProducts, setAllProducts] = useState([]);
 
@@ -43,22 +48,22 @@ function FeaturedProducts() {
                             <h1 className="text-2xl font-semibold text-gray900">Featured Products</h1>
                             <ul className="flex gap-4 category-links">
                                 <li className={activeCategory === "All Product" ? "active" : ""} onClick={() => setActiveCategory("All Product")}>
-                                    <a href="#All Product" className="text-sm font-semibold capitalize text-gray900">All Product</a>
+                                    <span className="text-sm font-semibold capitalize text-gray900 cursor-pointer">All Product</span>
                                 </li>
                                 <li onClick={() => setActiveCategory("Smart Phone")} className={activeCategory === "Smart Phone" ? "active" : ""}>
-                                    <a href="#Smart Phone" className="text-sm font-medium capitalize text-gray600">Smart Phones</a>
+                                    <span className="text-sm font-medium capitalize text-gray600 cursor-pointer">Smart Phones</span>
                                 </li>
                                 <li onClick={() => setActiveCategory("Laptop")} className={activeCategory === "Laptop" ? "active" : ""}>
-                                    <a href="#Laptop" className="text-sm font-medium capitalize text-gray600">Laptops</a>
+                                    <span className="text-sm font-medium capitalize text-gray600 cursor-pointer">Laptops</span>
                                 </li>
                                 <li onClick={() => setActiveCategory("tablets")} className={activeCategory === "tablets" ? "active" : ""}>
-                                    <a href="#Headphone" className="text-sm font-medium capitalize text-gray600">tablets</a>
+                                    <span className="text-sm font-medium capitalize text-gray600 cursor-pointer">tablets</span>
                                 </li>
                                 <li onClick={() => setActiveCategory("mobileAccessories")} className={activeCategory === "mobileAccessories" ? "active" : ""}>
-                                    <a href="#TV" className="text-sm font-medium capitalize text-gray600">mobile Accessories</a>
+                                    <span className="text-sm font-medium capitalize text-gray600 cursor-pointer">mobile Accessories</span>
                                 </li>
                                 <div className="flex items-center gap-2 navigate-all-products">
-                                    <a href="#Browse All Product" className="text-sm font-semibold text-primary500">Browse All Product</a>
+                                    <span className="text-sm font-semibold text-primary500 cursor-pointer">Browse All Product</span>
                                     <FaArrowRight className="w-5 h-5 cursor-pointer text-primary500" />
                                 </div>
                             </ul>
@@ -75,17 +80,23 @@ function FeaturedProducts() {
                                             return (
                                                 <div className="col-product w-[234px] h-[320px] rounded-[3px] p-3" key={product.id}>
                                                     <div className="all-images w-[202px] h-[172px] relative mb-5">
-                                                        <img src={product.images[0]} alt="product-img" className="object-contain w-full h-full" />
+                                                        <img src={product.images[0]} alt="product-img" className="w-full h-full object-contain" />
                                                         <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full gap-2 h-c-v-icons">
                                                             <div className="col-heart w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
                                                                 <FaRegHeart className="w-5 h-5 text-black" />
                                                             </div>
-                                                            <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
+                                                            <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer"
+                                                                onClick={() => {
+                                                                    dispatch(addToCart(product))
+                                                                }}
+                                                            >
                                                                 <FiShoppingCart className="w-5 h-5 text-black" />
                                                             </div>
-                                                            <div className="col-view  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
-                                                                <FiEye className="w-5 h-5 text-black" />
-                                                            </div>
+                                                            <Link to={"/product-page"}>
+                                                                <div className="col-view  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
+                                                                    <FiEye className="w-5 h-5 text-black" />
+                                                                </div>
+                                                            </Link>
                                                         </div>
                                                     </div>
                                                     <div className="flex flex-col gap-2 information-product">
@@ -120,12 +131,18 @@ function FeaturedProducts() {
                                                             <div className="col-heart w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
                                                                 <FaRegHeart className="w-5 h-5 text-black" />
                                                             </div>
-                                                            <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
+                                                            <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer"
+                                                                onClick={() => {
+                                                                    dispatch(addToCart(product))
+                                                                }}
+                                                            >
                                                                 <FiShoppingCart className="w-5 h-5 text-black" />
                                                             </div>
-                                                            <div className="col-view  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
-                                                                <FiEye className="w-5 h-5 text-black" />
-                                                            </div>
+                                                            <Link to={"/product-page"}>
+                                                                <div className="col-view  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
+                                                                    <FiEye className="w-5 h-5 text-black" />
+                                                                </div>
+                                                            </Link>
                                                         </div>
                                                     </div>
                                                     <div className="flex flex-col gap-2 information-product">
@@ -160,12 +177,18 @@ function FeaturedProducts() {
                                                             <div className="col-heart w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
                                                                 <FaRegHeart className="w-5 h-5 text-black" />
                                                             </div>
-                                                            <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
+                                                            <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer"
+                                                                onClick={() => {
+                                                                    dispatch(addToCart(product));
+                                                                }}
+                                                            >
                                                                 <FiShoppingCart className="w-5 h-5 text-black" />
                                                             </div>
-                                                            <div className="col-view  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
-                                                                <FiEye className="w-5 h-5 text-black" />
-                                                            </div>
+                                                            <Link to={"product-page"}>
+                                                                <div className="col-view  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
+                                                                    <FiEye className="w-5 h-5 text-black" />
+                                                                </div>
+                                                            </Link>
                                                         </div>
                                                     </div>
                                                     <div className="flex flex-col gap-2 information-product">
@@ -200,12 +223,18 @@ function FeaturedProducts() {
                                                             <div className="col-heart w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
                                                                 <FaRegHeart className="w-5 h-5 text-black" />
                                                             </div>
-                                                            <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
+                                                            <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer"
+                                                                onClick={() => {
+                                                                    dispatch(addToCart(product))
+                                                                }}
+                                                            >
                                                                 <FiShoppingCart className="w-5 h-5 text-black" />
                                                             </div>
-                                                            <div className="col-view  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
-                                                                <FiEye className="w-5 h-5 text-black" />
-                                                            </div>
+                                                            <Link to={"/product-page"}>
+                                                                <div className="col-view  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
+                                                                    <FiEye className="w-5 h-5 text-black" />
+                                                                </div>
+                                                            </Link>
                                                         </div>
                                                     </div>
                                                     <div className="flex flex-col gap-2 information-product">
@@ -240,12 +269,18 @@ function FeaturedProducts() {
                                                             <div className="col-heart w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
                                                                 <FaRegHeart className="w-5 h-5 text-black" />
                                                             </div>
-                                                            <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
+                                                            <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer"
+                                                                onClick={() => {
+                                                                    dispatch(addToCart(product))
+                                                                }}
+                                                            >
                                                                 <FiShoppingCart className="w-5 h-5 text-black" />
                                                             </div>
-                                                            <div className="col-view  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
-                                                                <FiEye className="w-5 h-5 text-black" />
-                                                            </div>
+                                                            <Link to={"/product-page"}>
+                                                                <div className="col-view  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
+                                                                    <FiEye className="w-5 h-5 text-black" />
+                                                                </div>
+                                                            </Link>
                                                         </div>
                                                     </div>
                                                     <div className="flex flex-col gap-2 information-product">

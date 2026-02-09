@@ -35,22 +35,22 @@ function BestProducts() {
                     <h1 className="text-2xl font-semibold text-gray900">Best Products</h1>
                     <ul className="flex gap-4 category-links">
                         <li className={activeCategory === "All Product" ? "active" : ""} onClick={() => setActiveCategory("All Product")}>
-                            <a href="#All Product" className="text-sm font-semibold capitalize text-gray900">All Product</a>
+                            <span className="text-sm font-semibold capitalize text-gray900 cursor-pointer">All Product</span>
                         </li>
                         <li onClick={() => setActiveCategory("mens-watches")} className={activeCategory === "mens-watches" ? "active" : ""}>
-                            <a href="#Smart Phone" className="text-sm font-medium capitalize text-gray600">mens-watches</a>
+                            <span className="text-sm font-medium capitalize text-gray600 cursor-pointer">mens-watches</span>
                         </li>
                         <li onClick={() => setActiveCategory("mens-shirts")} className={activeCategory === "mens-shirts" ? "active" : ""}>
-                            <a href="#Laptop" className="text-sm font-medium capitalize text-gray600">mens-shirts</a>
+                            <span className="text-sm font-medium capitalize text-gray600 cursor-pointer">mens-shirts</span>
                         </li>
                         <li onClick={() => setActiveCategory("mens-shoes")} className={activeCategory === "mens-shoes" ? "active" : ""}>
-                            <a href="#Headphone" className="text-sm font-medium capitalize text-gray600">mens-shoes</a>
+                            <span className="text-sm font-medium capitalize text-gray600 cursor-pointer">mens-shoes</span>
                         </li>
                         <li onClick={() => setActiveCategory("sports-accessories")} className={activeCategory === "sports-accessories" ? "active" : ""}>
-                            <a href="#Headphone" className="text-sm font-medium capitalize text-gray600">sports-accessories</a>
+                            <span className="text-sm font-medium capitalize text-gray600 cursor-pointer">sports-accessories</span>
                         </li>
                         <div className="flex items-center gap-2 navigate-all-products">
-                            <a href="#Browse All Product" className="text-sm font-semibold text-primary500">Browse All Product</a>
+                            <span className="text-sm font-semibold text-primary500 cursor-pointer">Browse All Product</span>
                             <FaArrowRight className="w-5 h-5 cursor-pointer text-primary500" />
                         </div>
                     </ul>
