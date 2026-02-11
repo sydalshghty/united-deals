@@ -1,47 +1,50 @@
 import { FaPlus, FaMinus, FaCheck } from "react-icons/fa6";
 import deleteIcon from "../../assets/trash.svg";
-import productImgTest from "../../assets/Image-product1.png";
 import IconShopSummary from "../../assets/Icon-shop-summary.svg";
-import { useState } from "react";
 import { useSelector,useDispatch } from "react-redux";
 import { removeProduct,increaseQuantity,decreaseQuantity } from "../../store/slices.jsx/cart-products-slice";
 function CartProducts() {
     const dispatch = useDispatch();
     const state = useSelector(state => state.cartProducts.cartProducts);
 
+    const totalPrice = state.reduce((total,product) => {
+        return total + (product.price * product.quantity) - 47.10;
+    },0)
+    .toFixed(2);
+
     return (
         <section className="w-full h-full cart-products mb-[72px]">
-            <div className="container min-w-[100%] h-full flex gap-[60px] flex-wrap">
+            <div className="container min-w-[100%] h-full flex justify-between flex-wrap">
                 <div className="all-products-cart">
                     <div className="col-number-items flex items-center gap-[5px] mb-[33px]">
                         <h2 className="text-xl font-bold text-textcolorPrimary">Number of Items</h2>
                         <span className="text-lg number-items text-textcolorLight">{state.length}</span>
                     </div>
-                    <div className="all-products flex flex-col gap-[25px]">
+                    <div className="all-products flex flex-col gap-[25px] min-w-full">
                         {state.map((product,index) => {
                             return(
-                                <div className="flex w-full col-product gap-[85px] items-center" key={product.id}>
+                                <div className="flex  col-product items-center min-w-[600px] justify-between" key={product.id}>
                                     <div className="flex items-center gap-4 image-title-product">
                                         <div className="image-product min-w-[90px] h-[72px] shadow-lg p-[2px] rounded-[10px] border-[1px] border-textColor flex justify-center items-center bg-slate-50">
                                             <img src={product.images[0]} alt="img-product" className="object-contain w-full h-full" />
                                         </div>
-                                        <h2 className="text-[15px] font-bold text-textcolorPrimary">{product.title.slice(0,10)}</h2>
+                                        <h2 className="text-[15px] font-bold text-textcolorPrimary">{product.title.slice(0,8)}</h2>
                                     </div>
                                     <span className="price-product text-[15px] text-colorPrice">{`₹${product.price}`}</span>
                                     <div className="flex items-center col-quantity w-[105px] h-[42px] pt-[10px] pb-[10px] pl-[16px] pr-[16px] border-[1px] border-textColor rounded-[4px] gap-[10px] justify-center">
                                         <FaMinus className="transition-colors duration-500 cursor-pointer hover:text-textcolorLight"
                                             onClick={() => {
-                                                dispatch(decreaseQuantity(product))
+                                                dispatch(decreaseQuantity(product.id))
                                             }}
                                         />
                                         <span className="number-quantity text-[15px] text-textcolorPrimary">{product.quantity}</span>
                                         <FaPlus className="transition-colors duration-500 cursor-pointer hover:text-textcolorLight"
                                             onClick={() => {
-                                                dispatch(increaseQuantity(product.quantity))
+                                                dispatch(increaseQuantity(product.id))
                                             }}
                                         />
                                     </div>
-                                    <span className="total-price-product text-[15px] text-colorPrice">{`₹${product.price}`}</span>
+                                    <span className="total-price-product text-[15px] text-colorPrice">{`₹${(product.price * product.quantity).toFixed(2)}`}</span>
                                     <div className="cursor-pointer delete-product"
                                         onClick={() => {
                                             dispatch(removeProduct(product.id))
@@ -84,7 +87,7 @@ function CartProducts() {
                         </div>
                         <div className="flex items-center justify-between w-full h-full pt-2 border-t-2 col-total-price border-textColor">
                             <p className="text-sm font-bold text-textcolorPrimary">Total Price</p>
-                            <span className="text-sm font-bold text-textcolorPrimary">₹110.13</span>
+                            <span className="text-sm font-bold text-textcolorPrimary">{`₹${totalPrice}`}</span>
                         </div>
                     </div>
                     <button className="shop-now w-full h-[52px] bg-bgshopnow pt-4 pb-4 pl-8 pr-8 rounded-lg flex justify-center items-center gap-2">

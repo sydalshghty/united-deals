@@ -5,7 +5,10 @@ import { FiEye } from "react-icons/fi";
 import { FaStar } from "react-icons/fa6";
 import { useState, useEffect } from "react";
 import { OrbitProgress } from "react-loading-indicators";
+import { addToCart } from "../../store/slices.jsx/cart-products-slice";
+import { useDispatch } from "react-redux";
 function BestProducts() {
+    const dispatch = useDispatch();
     const [activeCategory, setActiveCategory] = useState("All Product");
     const [allProducts, setAllProducts] = useState([]);
 
@@ -72,7 +75,11 @@ function BestProducts() {
                                                     <div className="col-heart w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
                                                         <FaRegHeart className="w-5 h-5 text-black" />
                                                     </div>
-                                                    <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
+                                                    <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer"
+                                                        onClick={() => {
+                                                            dispatch(addToCart(product))
+                                                        }}
+                                                    >
                                                         <FiShoppingCart className="w-5 h-5 text-black" />
                                                     </div>
                                                     <div className="col-view  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
@@ -112,7 +119,11 @@ function BestProducts() {
                                                     <div className="col-heart w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
                                                         <FaRegHeart className="w-5 h-5 text-black" />
                                                     </div>
-                                                    <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
+                                                    <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer"
+                                                        onClick={() => {
+                                                            dispatch(addToCart(product))
+                                                        }}
+                                                    >
                                                         <FiShoppingCart className="w-5 h-5 text-black" />
                                                     </div>
                                                     <div className="col-view  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
@@ -152,7 +163,11 @@ function BestProducts() {
                                                     <div className="col-heart w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
                                                         <FaRegHeart className="w-5 h-5 text-black" />
                                                     </div>
-                                                    <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
+                                                    <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer"
+                                                        onClick={() => {
+                                                            dispatch(addToCart(product))
+                                                        }}
+                                                    >
                                                         <FiShoppingCart className="w-5 h-5 text-black" />
                                                     </div>
                                                     <div className="col-view  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
@@ -192,7 +207,11 @@ function BestProducts() {
                                                     <div className="col-heart w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
                                                         <FaRegHeart className="w-5 h-5 text-black" />
                                                     </div>
-                                                    <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
+                                                    <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer"
+                                                        onClick={() => {
+                                                            dispatch(addToCart(product))
+                                                        }}
+                                                    >
                                                         <FiShoppingCart className="w-5 h-5 text-black" />
                                                     </div>
                                                     <div className="col-view  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
@@ -232,7 +251,11 @@ function BestProducts() {
                                                     <div className="col-heart w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
                                                         <FaRegHeart className="w-5 h-5 text-black" />
                                                     </div>
-                                                    <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
+                                                    <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer"
+                                                        onClick={() => {
+                                                            dispatch(addToCart(product))
+                                                        }}
+                                                    >
                                                         <FiShoppingCart className="w-5 h-5 text-black" />
                                                     </div>
                                                     <div className="col-view  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">

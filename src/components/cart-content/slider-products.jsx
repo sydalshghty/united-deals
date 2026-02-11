@@ -6,8 +6,10 @@ import { Autoplay } from "swiper/modules";
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import { ThreeDot } from "react-loading-indicators";
-
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../store/slices.jsx/cart-products-slice";
 function ProductsSlider() {
+    const dispath = useDispatch();
     const swiperRef = useRef(null);
 
     const [allProducts, setAllProducts] = useState([]);
@@ -89,7 +91,11 @@ function ProductsSlider() {
                                                     <span className="text-sm font-bold price-product text-redcolor">{`₹${product.price}`}</span>
                                                     <span className="rate-product w-[32px] h-[15px] bg-redcolor text-center text-whiteColor text-[8px] flex justify-center items-center">{product.rating}</span>
                                                 </div>
-                                                <button className="add-to-cart flex items-center w-full border-[1px] border-borderColor h-[36px] rounded-[4px] justify-center gap-3 cursor-pointer">
+                                                <button className="add-to-cart flex items-center w-full border-[1px] border-borderColor h-[36px] rounded-[4px] justify-center gap-3 cursor-pointer"
+                                                    onClick={() => {
+                                                        dispath(addToCart(product))
+                                                    }}
+                                                >
                                                     <FiShoppingCart />
                                                     <p className="text-sm font-bold text-textcolorPrimary">Add to cart</p>
                                                 </button>
