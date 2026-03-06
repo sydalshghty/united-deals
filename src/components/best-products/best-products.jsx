@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { OrbitProgress } from "react-loading-indicators";
 import { addToCart } from "../../store/slices.jsx/cart-products-slice";
 import { useDispatch } from "react-redux";
+import toast from "react-hot-toast";
 function BestProducts() {
     const dispatch = useDispatch();
     const [activeCategory, setActiveCategory] = useState("All Product");
@@ -77,7 +78,8 @@ function BestProducts() {
                                                     </div>
                                                     <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer"
                                                         onClick={() => {
-                                                            dispatch(addToCart(product))
+                                                            dispatch(addToCart(product));
+                                                            toast.success("Added to cart successfully");
                                                         }}
                                                     >
                                                         <FiShoppingCart className="w-5 h-5 text-black" />
@@ -121,7 +123,8 @@ function BestProducts() {
                                                     </div>
                                                     <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer"
                                                         onClick={() => {
-                                                            dispatch(addToCart(product))
+                                                            dispatch(addToCart(product));
+                                                            toast.success("Added to cart successfully");
                                                         }}
                                                     >
                                                         <FiShoppingCart className="w-5 h-5 text-black" />
@@ -165,7 +168,8 @@ function BestProducts() {
                                                     </div>
                                                     <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer"
                                                         onClick={() => {
-                                                            dispatch(addToCart(product))
+                                                            dispatch(addToCart(product));
+                                                            toast.success("Added to cart successfully");
                                                         }}
                                                     >
                                                         <FiShoppingCart className="w-5 h-5 text-black" />
@@ -209,7 +213,8 @@ function BestProducts() {
                                                     </div>
                                                     <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer"
                                                         onClick={() => {
-                                                            dispatch(addToCart(product))
+                                                            dispatch(addToCart(product));
+                                                            toast.success("Added to cart successfully");
                                                         }}
                                                     >
                                                         <FiShoppingCart className="w-5 h-5 text-black" />
@@ -253,7 +258,8 @@ function BestProducts() {
                                                     </div>
                                                     <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer"
                                                         onClick={() => {
-                                                            dispatch(addToCart(product))
+                                                            dispatch(addToCart(product));
+                                                            toast.success("Added to cart successfully");
                                                         }}
                                                     >
                                                         <FiShoppingCart className="w-5 h-5 text-black" />

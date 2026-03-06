@@ -10,6 +10,8 @@ import { OrbitProgress } from "react-loading-indicators";
 import { Link } from "react-router-dom";
 import { addToCart } from "../../store/slices.jsx/cart-products-slice";
 import { useDispatch } from "react-redux";
+import toast from "react-hot-toast";
+
 function FeaturedProducts() {
     const dispatch = useDispatch();
 
@@ -87,12 +89,13 @@ function FeaturedProducts() {
                                                             </div>
                                                             <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer"
                                                                 onClick={() => {
-                                                                    dispatch(addToCart(product))
+                                                                    dispatch(addToCart(product));
+                                                                    toast.success("Added to cart successfully");
                                                                 }}
                                                             >
                                                                 <FiShoppingCart className="w-5 h-5 text-black" />
                                                             </div>
-                                                            <Link to={"/product-page"}>
+                                                            <Link to={`Product/${product.id}`}>
                                                                 <div className="col-view  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
                                                                     <FiEye className="w-5 h-5 text-black" />
                                                                 </div>
@@ -133,7 +136,8 @@ function FeaturedProducts() {
                                                             </div>
                                                             <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer"
                                                                 onClick={() => {
-                                                                    dispatch(addToCart(product))
+                                                                    dispatch(addToCart(product));
+                                                                    toast.success("Added to cart successfully");
                                                                 }}
                                                             >
                                                                 <FiShoppingCart className="w-5 h-5 text-black" />
@@ -180,6 +184,7 @@ function FeaturedProducts() {
                                                             <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer"
                                                                 onClick={() => {
                                                                     dispatch(addToCart(product));
+                                                                    toast.success("Added to cart successfully");
                                                                 }}
                                                             >
                                                                 <FiShoppingCart className="w-5 h-5 text-black" />
@@ -225,7 +230,8 @@ function FeaturedProducts() {
                                                             </div>
                                                             <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer"
                                                                 onClick={() => {
-                                                                    dispatch(addToCart(product))
+                                                                    dispatch(addToCart(product));
+                                                                    toast.success("Added to cart successfully");
                                                                 }}
                                                             >
                                                                 <FiShoppingCart className="w-5 h-5 text-black" />
@@ -271,7 +277,8 @@ function FeaturedProducts() {
                                                             </div>
                                                             <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer"
                                                                 onClick={() => {
-                                                                    dispatch(addToCart(product))
+                                                                    dispatch(addToCart(product));
+                                                                    toast.success("Added to cart successfully");
                                                                 }}
                                                             >
                                                                 <FiShoppingCart className="w-5 h-5 text-black" />

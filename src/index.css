@@ -65,3 +65,12 @@ body {
         width: 1170px;
     }
 }
+
+@media (max-width: 992px){
+    .home-page-content,
+    .product-page-content,
+    .cart-page-content{
+        margin-top: 125px;
+    }
+}
+

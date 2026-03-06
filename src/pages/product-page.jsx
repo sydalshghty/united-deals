@@ -1,8 +1,16 @@
-import TopHeaderCart from "../components/cart-content/tp-header-cart";
+import Header from "../components/header";
+import NavLinksProduct from "../components/product-page-content/nav-links-product";
+import ProductInformation from "../components/product-page-content/product-information";
+import FrequentlyProducts from "../components/product-page-content/frequently-products";
 function ProductPage() {
     return(
         <>
-            <TopHeaderCart/>
+            <Header/>          
+            <div className="product-page-content mt-[150px]">
+                <NavLinksProduct/>
+                <ProductInformation/>
+                <FrequentlyProducts/>
+            </div>
         </>
     )
 }

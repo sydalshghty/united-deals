@@ -8,6 +8,7 @@ import 'swiper/css/autoplay';
 import { ThreeDot } from "react-loading-indicators";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../store/slices.jsx/cart-products-slice";
+import toast from "react-hot-toast";
 function ProductsSlider() {
     const dispath = useDispatch();
     const swiperRef = useRef(null);
@@ -93,7 +94,8 @@ function ProductsSlider() {
                                                 </div>
                                                 <button className="add-to-cart flex items-center w-full border-[1px] border-borderColor h-[36px] rounded-[4px] justify-center gap-3 cursor-pointer"
                                                     onClick={() => {
-                                                        dispath(addToCart(product))
+                                                        dispath(addToCart(product));
+                                                        toast.success("Added to cart successfully");
                                                     }}
                                                 >
                                                     <FiShoppingCart />
