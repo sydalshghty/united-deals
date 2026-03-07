@@ -11,16 +11,16 @@ import 'swiper/css/autoplay';
 function TopCategories() {
     const allCategories = [
         { id: 1, img: LaptopImg, title: "laptops" },
-        { id: 1, img: TabletsImg, title: "tablets" },
-        { id: 1, img: SmartPhonesImg, title: "smart phones" },
-        { id: 1, img: MobileAccessImg, title: "mobile-accessories" },
-        { id: 1, img: MensWatchesImg, title: "mens-watches" },
+        { id: 2, img: TabletsImg, title: "tablets" },
+        { id: 3, img: SmartPhonesImg, title: "smart phones" },
+        { id: 4, img: MobileAccessImg, title: "mobile-accessories" },
+        { id: 5, img: MensWatchesImg, title: "mens-watches" },
     ]
     return (
-        <section className="w-full h-full top-categories-section">
+        <section className="w-full h-full top-categories-section mt-[40px] mb-[40px]">
             <div className="container min-w-[100%] h-full">
                 <div className="flex items-center justify-between w-full col-heading border-b-[1px] border-textColor pb-5">
-                    <h1 className="sm:text-[22px] md:text-[25px] lg:text-[28px] font-bold text-headingcolor uppercase">Shop From <span className="text-starColor">Top CateGories</span></h1>
+                    <h1 className="sm:text-[22px] md:text-[25px] lg:text-[28px] font-bold text-headingcolor uppercase">Shop From <span className="text-primary500">Top CateGories</span></h1>
                     <ViewAllButton />
                 </div>
                 <div className="mt-5 all-categories">

@@ -4,6 +4,7 @@ import Banner from "../components/banners.jsx/banner";
 import Freedelivery from "../components/freedelivery/freedelivery";
 import TodaysDealsProducts from "../components/todays-deals-products/todays-deals-products";
 import TopCategories from "../components/top-categories/top-categories";
+import TopElectronicsBrands from "../components/top-electronics-brands/top-electronics-brands";
 import FeaturedProducts from "../components/featured-products/featured-products";
 //import ShopWithCategories from "../components/shop-Categories/shop-categories";
 import BestProducts from "../components/best-products/best-products";
@@ -20,15 +21,18 @@ function HomePage() {
             <div className="home-page-content mt-[150px]">
                 <Banner />
                 <Freedelivery />
-                <TodaysDealsProducts/>
-                <TopCategories/>
+                <TodaysDealsProducts />
+                <TopCategories />
+                <TopElectronicsBrands />
+                {/*
                 <FeaturedProducts />
                 <NewAppleBanner />
                 <BestProducts />
                 <MacbookProBanner />
                 <FlashProducts />
                 <LatestNews />
-                <EmailAddress/>
+                <EmailAddress />
+                */}
                 <Footer />
             </div>
         </>

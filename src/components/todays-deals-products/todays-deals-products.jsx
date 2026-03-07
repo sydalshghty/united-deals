@@ -1,4 +1,4 @@
-import NewImg from "../../assets/new-img.svg";
+import NewImg from "../../assets/new-icon.svg";
 import { useState, useEffect, useMemo } from "react";
 import { OrbitProgress } from "react-loading-indicators";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -31,7 +31,7 @@ function TodaysDealsProducts() {
     }, [products])
     return (
         <>
-            <section className="todays-deals-products mt-[72px] mb-[72px] w-full h-full">
+            <section className="todays-deals-products mt-[40px] mb-[40px] w-full h-full">
                 <div className="container h-full min-w-[100%]">
                     <div className="flex items-center justify-between w-full h-full mb-5 col-headin">
                         <h1 className="sm:text-[22px] md:text-[25px] lg:text-[28px]  font-bold text-headingcolor uppercase">Today’s Deals of the day</h1>
@@ -39,7 +39,7 @@ function TodaysDealsProducts() {
                     </div>
                     {electroProducts.length === 0 ?
                         <div className="col-loading w-full h-[400px] flex justify-center items-center">
-                            <OrbitProgress color="#FCBD01" size="medium" text="" textColor="" />
+                            <OrbitProgress color="#FA8232" size="medium" text="" textColor="" />
                         </div>
                         :
                         <div className="flex items-center justify-center w-full h-full all-products-deals">
@@ -82,7 +82,7 @@ function TodaysDealsProducts() {
                                                         </h3>
                                                         <div className="buy-now-btn w-full h-[48px] bg-headingcolor rounded-lg flex justify-center items-center cursor-pointer text-sm font-medium">
                                                             <p className="text-whiteColor">BUY NOW-</p>
-                                                            <span className="text-colorpriceproduct">{`₹${product.price}`}</span>
+                                                            <span className="text-primary500">{`₹${product.price}`}</span>
                                                         </div>
                                                     </div>
                                                 </div>
