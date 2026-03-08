@@ -6,11 +6,26 @@ import { FiUser } from "react-icons/fi";
 import { FiShoppingCart } from "react-icons/fi";
 import { FiSearch } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import "./cart-style.css";
 function CenterHeaderCart() {
+    const [search,setSearch] = useState("");
+    const [products,setProducts] = useState([]);
+
+    const getSearchProducts = async () => {
+        const res = await fetch(`https://dummyjson.com/products/search?q=${search}`);
+        const data = await res.json();
+        setProducts(data.products);
+    }
+
+    useEffect(() => {
+        getSearchProducts()
+    },[search]);
+
     return (
+        <>
         <section className="w-full h-[90px] center-header-cart bg-whiteColor">
-            <div className="container min-w-[100%] h-full flex justify-between items-center">
+            <div className="container min-w-[100%] h-full flex justify-between items-center relative">
                 <Link to={"/"}>
                     <div className="flex items-center gap-5 col-logo cursor-pointer">
                         <img src={iconLogo} alt="icon-logo-cart" className="cursor-pointer" />
@@ -22,8 +37,42 @@ function CenterHeaderCart() {
                     <button type="submit">
                         <img src={searchIcon} alt="search-icon" />
                     </button>
-                    <input type="text" placeholder="Search essentials, groceries and more..." className="w-full h-full text-sm bg-transparent border-none outline-none text-colorPlaceholder" />
+                    <input type="text" 
+                        onChange={(e) => setSearch(e.target.value)}
+                        placeholder="Search essentials, groceries and more..." 
+                        className="w-full h-full text-sm bg-transparent border-none outline-none text-colorPlaceholder" />
                 </form>
+                {search.length >= 3 
+                    ? 
+                <div className="content-result-search absolute top-[70px] w-full flex justify-center items-center">
+                    <div className="all-result-search w-[35%] max-h-[320px] overflow-y-auto shadow-lg bg-white rounded p-2">
+                        {products.length === 0 ?
+                            <div className="h-[250px] flex justify-center items-center">
+                                <h1 className="text-center text-black capitalize">product not found</h1>
+                            </div>
+                            :
+                            <>
+                                {products.map((product,index) => {
+                                    return(
+                                        <Link to={`/Product/${product.id}`}>
+                                            <div className="col-product flex justify-between items-center border-b-[1px] border-borderColor p-1 cursor-pointer" key={product.id}>
+                                                <div className="col-img w-[120px] h-[70px]">
+                                                    <img src={product?.images[0]} alt="product-img" className="w-full h-full object-contain"/>
+                                                </div>
+                                                <h1 className="text-base text-black font-bold">{product.title}</h1>
+                                                <span className="text-[14px] font-bold text-primary500">{`₹${product.price}`}</span>
+                                            </div>
+                                        </Link>
+                                    )
+                                })}
+                            </>
+                            
+                        }
+                    </div>
+                </div>
+                    :
+                    null
+                }
                 <div className="flex items-center gap-5 sign-in-cart-content">
                     <FiSearch className="search-icon w-[20px] h-[20px] text-black cursor-pointer hover:text-dealsColor transition-colors duration-500"/>
                     <div className="col-deals flex items-center gap-[6px]">
@@ -43,6 +92,7 @@ function CenterHeaderCart() {
                 </div>
             </div>
         </section>
+        </>
     )
 }
 export default CenterHeaderCart;
