@@ -1,6 +1,8 @@
 /*center header cart style*/
 @media (min-width: 992px){
-    .center-header-cart .container .search-icon{
+    .center-header-cart .container .search-icon,
+    .center-header-cart .content-result-search-mobile,
+    .center-header-cart .form-search-mobile{
         display: none;
     }
 }
@@ -10,13 +12,13 @@
     .center-header-cart .cart-p {
         display: none;
     }
-    .center-header-cart .container .content-result-search .all-result-search{
-        width: 50%;
-    }
 }
 @media (max-width: 1250px){
     .cart-products .container .col-product{
         gap: 40px;
+    }
+    .center-header-cart .container .content-result-search .all-result-search{
+        width: 45%;
     }
 }
 @media (max-width: 992px){
