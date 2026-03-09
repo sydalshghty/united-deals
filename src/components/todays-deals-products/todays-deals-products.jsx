@@ -33,7 +33,7 @@ function TodaysDealsProducts() {
         <>
             <section className="todays-deals-products mt-[40px] mb-[40px] w-full h-full">
                 <div className="container h-full min-w-[100%]">
-                    <div className="flex items-center justify-between w-full h-full mb-5 col-headin">
+                    <div className="flex items-center justify-between w-full h-full mb-5 col-heading">
                         <h1 className="sm:text-[22px] md:text-[25px] lg:text-[28px]  font-bold text-headingcolor uppercase">Today’s Deals of the day</h1>
                         <ViewAllButton />
                     </div>

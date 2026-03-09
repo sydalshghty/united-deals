@@ -24,15 +24,15 @@ function HomePage() {
                 <TodaysDealsProducts />
                 <TopCategories />
                 <TopElectronicsBrands />
-                {/*
                 <FeaturedProducts />
+                {/*
                 <NewAppleBanner />
                 <BestProducts />
                 <MacbookProBanner />
                 <FlashProducts />
                 <LatestNews />
                 <EmailAddress />
-                */}
+*/}
                 <Footer />
             </div>
         </>
