@@ -10,6 +10,9 @@
     .center-header-cart .cart-p {
         display: none;
     }
+    .center-header-cart .container .content-result-search .all-result-search{
+        width: 50%;
+    }
 }
 @media (max-width: 1250px){
     .cart-products .container .col-product{
@@ -20,7 +23,8 @@
     .top-header-cart .container{
         justify-content: center;
     }
-    .top-header-cart .container .all-text{
+    .top-header-cart .container .all-text,
+    .center-header-cart .container .content-result-search .all-result-search{
         display: none;
     }
     .center-header-cart{

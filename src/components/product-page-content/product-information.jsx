@@ -42,7 +42,7 @@ function ProductInformation() {
 
     useEffect(() => {
         getProductData();
-    }, []);
+    }, [id]);
 
     return (
         <>
