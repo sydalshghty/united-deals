@@ -1,17 +1,19 @@
-import { Routes,Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/Home-Page";
 import CartPage from "./pages/cart-page";
 import ProductPage from "./pages/product-page";
 import { Toaster } from "react-hot-toast";
+import TopButton from "./components/top-btn";
 function App() {
-   return (
+  return (
     <>
-    <Routes>
-      <Route path="/" element={<HomePage/>} />
-      <Route path="cart" element={<CartPage/>} />
-      <Route path="Product/:id" element={<ProductPage />} />
-    </Routes>
-    <Toaster position="top-right"/>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="cart" element={<CartPage />} />
+        <Route path="Product/:id" element={<ProductPage />} />
+      </Routes>
+      <Toaster position="top-right" />
+      <TopButton />
     </>
   )
 }

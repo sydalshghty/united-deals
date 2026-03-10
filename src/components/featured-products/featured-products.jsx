@@ -44,7 +44,7 @@ function FeaturedProducts() {
 
     /*End Get All Product Data With Api Function*/
     return (
-        <Element name="Featured-Products">
+        <Element name="featured-products">
             <section className="w-full h-full featured-products  mb-[40px]">
                 <div className="container flex min-w-[100%] h-full gap-6">
                     <div className="w-full featured-products-content">
