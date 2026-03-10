@@ -38,7 +38,7 @@ function FrequentlyProducts() {
                             <OrbitProgress color="#FA8232" size="medium" text="" textColor="" />
                         </div>
                         :
-                        <div className="flex flex-wrap w-full gap-5 all-products">
+                        <div className="flex flex-wrap items-center justify-center w-full gap-5 all-products">
                             {sortElectroProducts.map((product, index) => {
                                 return (
                                     <Link to={`/Product/${product.id}`} key={product.id}>
