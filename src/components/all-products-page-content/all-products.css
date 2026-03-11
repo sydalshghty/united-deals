@@ -1,0 +1,10 @@
+.all-products-section .container .filter-list-products{
+    width: 280px;
+    height: 100%;
+}
+.all-products-section .container .all-products{
+    width: calc(100% - 300px);
+}
+.all-products-section .container .filter-list-products span.check{
+    background-color: black;
+}

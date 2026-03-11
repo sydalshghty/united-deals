@@ -3,7 +3,7 @@ import HomeIcon from "../../assets/House.svg";
 import CaretRightIcon from "../../assets/CaretRight.svg";
 function NavLinksProduct() {
     return (
-        <section className="nav-links-product w-full h-[55px] bg-gray-50  border-[1px] border-gray-100">
+        <section className="nav-links-product w-full h-[55px] bg-gray50  border-[1px] border-gray-100">
             <div className="container min-w-[100%] h-full">
                 <ul className="flex items-center w-full h-full gap-4">
                     <li className="flex items-center gap-2">

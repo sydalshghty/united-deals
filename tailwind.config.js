@@ -51,6 +51,8 @@ export default {
         bgImgProduct: "#ECEDEF",
         colorpriceproduct: "#FFA52F",
         bgCategory: "#F5F5F5",
+        darkColor: "#13101E",
+        checkcolor: "#626262",
       }
     },
   },
