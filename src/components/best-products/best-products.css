@@ -1,0 +1,8 @@
+@media (max-width: 768px){
+    .best-products .container .category-links{
+        display: none;
+    }
+    .best-products .container .browse-all-products{
+        display: none;
+    }
+}

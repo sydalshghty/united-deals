@@ -50,7 +50,9 @@ function FeaturedProducts() {
                     <div className="w-full featured-products-content">
                         <div className="flex items-center justify-between w-full heading-col">
                             <h1 className="sm:text-[22px] md:text-[25px] lg:text-[28px]  font-bold text-headingcolor uppercase">frequently bought together</h1>
-                            <ViewAllButton />
+                            <Link to={`/all-products`}>
+                                <ViewAllButton />
+                            </Link>
                         </div>
                         {allProducts.length === 0 ?
                             <div className="col-loading w-full min-h-[400px] flex justify-center items-center">
@@ -77,7 +79,7 @@ function FeaturedProducts() {
                                                             >
                                                                 <FiShoppingCart className="w-5 h-5 text-black" />
                                                             </div>
-                                                            <Link to={`Product/${product.id}`}>
+                                                            <Link to={`Product/${product.id}`} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
                                                                 <div className="col-view  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
                                                                     <FiEye className="w-5 h-5 text-black" />
                                                                 </div>

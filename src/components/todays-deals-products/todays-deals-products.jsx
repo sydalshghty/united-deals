@@ -68,7 +68,7 @@ function TodaysDealsProducts() {
                                     //w-[300px]
                                     return (
                                         <SwiperSlide key={product.id} className="flex items-center justify-center w-full">
-                                            <Link to={`Product/${product.id}`}>
+                                            <Link to={`Product/${product.id}`} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
                                                 <div className="h-full col-product">
                                                     <div className="content-img-product  bg-bgImgProduct rounded-[26px] mb-2 flex justify-center items-center flex-col relative cursor-pointer">
                                                         <div className="absolute top-0 left-0 col-new w-fit h-fit">

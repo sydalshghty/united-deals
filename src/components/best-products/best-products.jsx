@@ -8,6 +8,8 @@ import { OrbitProgress } from "react-loading-indicators";
 import { addToCart } from "../../store/slices.jsx/cart-products-slice";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
+import "./best-products.css";
 function BestProducts() {
     const dispatch = useDispatch();
     const [activeCategory, setActiveCategory] = useState("All Product");
@@ -33,30 +35,32 @@ function BestProducts() {
     const allElectroProducts = [...mensWatches.sort((a, b) => b.price - a.price).slice(0, 3), ...mensShirts.sort((a, b) => b.price - a.price).slice(0, 3), ...mensShoes.sort((a, b) => b.price - a.price).slice(0, 3), ...sportsAccessories.sort((a, b) => b.price - a.price).slice(0, 1)];
 
     return (
-        <section className="w-full h-full computer-accessories mt-[72px] mb-[72px]">
+        <section className="w-full h-full computer-accessories mt-[40px] mb-[40px] best-products">
             <div className="container min-w-[100%] h-full">
                 <div className="flex items-center justify-between w-full heading-col">
-                    <h1 className="text-2xl font-semibold text-gray900">Best Products</h1>
-                    <ul className="flex gap-4 category-links">
+                    <h1 className="sm:text-[22px] md:text-[25px] lg:text-[28px]  font-bold text-headingcolor uppercase">Best Products</h1>
+                    <ul className="flex flex-wrap gap-4 category-links">
                         <li className={activeCategory === "All Product" ? "active" : ""} onClick={() => setActiveCategory("All Product")}>
-                            <span className="text-sm font-semibold capitalize text-gray900 cursor-pointer">All Product</span>
+                            <span className="text-sm font-semibold capitalize cursor-pointer text-gray900">All Product</span>
                         </li>
                         <li onClick={() => setActiveCategory("mens-watches")} className={activeCategory === "mens-watches" ? "active" : ""}>
-                            <span className="text-sm font-medium capitalize text-gray600 cursor-pointer">mens-watches</span>
+                            <span className="text-sm font-medium capitalize cursor-pointer text-gray600">mens-watches</span>
                         </li>
                         <li onClick={() => setActiveCategory("mens-shirts")} className={activeCategory === "mens-shirts" ? "active" : ""}>
-                            <span className="text-sm font-medium capitalize text-gray600 cursor-pointer">mens-shirts</span>
+                            <span className="text-sm font-medium capitalize cursor-pointer text-gray600">mens-shirts</span>
                         </li>
                         <li onClick={() => setActiveCategory("mens-shoes")} className={activeCategory === "mens-shoes" ? "active" : ""}>
-                            <span className="text-sm font-medium capitalize text-gray600 cursor-pointer">mens-shoes</span>
+                            <span className="text-sm font-medium capitalize cursor-pointer text-gray600">mens-shoes</span>
                         </li>
                         <li onClick={() => setActiveCategory("sports-accessories")} className={activeCategory === "sports-accessories" ? "active" : ""}>
-                            <span className="text-sm font-medium capitalize text-gray600 cursor-pointer">sports-accessories</span>
+                            <span className="text-sm font-medium capitalize cursor-pointer text-gray600">sports-accessories</span>
                         </li>
-                        <div className="flex items-center gap-2 navigate-all-products">
-                            <span className="text-sm font-semibold text-primary500 cursor-pointer">Browse All Product</span>
-                            <FaArrowRight className="w-5 h-5 cursor-pointer text-primary500" />
-                        </div>
+                        <Link to={`/all-products`}>
+                            <div className="flex items-center gap-2 navigate-all-products browse-all-products">
+                                <span className="text-sm font-semibold cursor-pointer text-primary500">Browse All Product</span>
+                                <FaArrowRight className="w-5 h-5 cursor-pointer text-primary500" />
+                            </div>
+                        </Link>
                     </ul>
                 </div>
                 {allProducts.length === 0 ?
@@ -84,9 +88,11 @@ function BestProducts() {
                                                     >
                                                         <FiShoppingCart className="w-5 h-5 text-black" />
                                                     </div>
-                                                    <div className="col-view  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
-                                                        <FiEye className="w-5 h-5 text-black" />
-                                                    </div>
+                                                    <Link to={`/Product/${product.id}`} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+                                                        <div className="col-view  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
+                                                            <FiEye className="w-5 h-5 text-black" />
+                                                        </div>
+                                                    </Link>
                                                 </div>
                                             </div>
                                             <div className="flex flex-col gap-2 information-product">
