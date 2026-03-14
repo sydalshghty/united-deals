@@ -6,8 +6,10 @@ import { FaTh } from "react-icons/fa";
 import { FaThList } from "react-icons/fa";
 import returnIcon from "../../assets/return-home.svg";
 import { Link } from "react-router-dom";
+import { FaStar } from "react-icons/fa";
+import { OrbitProgress } from "react-loading-indicators";
 function AllProducts() {
-    const [showBrand, setShowBrand] = useState(false);
+    const [showBrand, setShowBrand] = useState(true);
     const [showCategory, setShowCategory] = useState(true);
     const [showPrice, setShowPrice] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState(null);
@@ -24,6 +26,7 @@ function AllProducts() {
         getAllProductts()
     }, [])
 
+    console.log(allProducts);
 
     const allBrands = [
         { id: 1, brand: "Apple" },
@@ -57,6 +60,12 @@ function AllProducts() {
         { id: 1, price: "₹500 - ₹700" }
     ]
 
+    const AppleProducts = allProducts.filter((product) => product.brand === "Apple");
+    const HuaweiProducts = allProducts.filter((product) => product.brand === "Huawei");
+    const LenovoProducts = allProducts.filter((product) => product.brand === "Lenovo");
+    const DellProducts = allProducts.filter((product) => product.brand === "Dell");
+    console.log(DellProducts);
+
     return (
         <>
             <div className="header-all-products mt-[20px] w-full h-full">
@@ -67,13 +76,6 @@ function AllProducts() {
                             <span className="text-[22px] font-semibold text-black capitalize">back</span>
                         </div>
                     </Link>
-                    <div className="flex items-center gap-3 col-showing-items">
-                        <div className="flex gap-2 shipe-icon">
-                            <FaTh className="text-gray-400 cursor-pointer" />
-                            <FaThList className="text-gray-400 cursor-pointer" />
-                        </div>
-                        <h2 className="">Showing 1 - 40 of items</h2>
-                    </div>
                 </div>
             </div>
             <section className="w-full h-full mt-10 mb-10 all-products-section">
@@ -160,8 +162,49 @@ function AllProducts() {
                             <p className="text-[16px] text-darkColor font-medium capitalize">Price High To Low</p>
                         </div>
                     </div>
-                    <div className="all-products">
-                        products, content
+                    <div className="flex flex-wrap h-full gap-5 all-products">
+                        {allProducts.length === 0 ?
+                            <div className="col-loading w-full h-[1000px] flex justify-center items-center">
+                                <OrbitProgress color="#FA8232" size="medium" text="" textColor="" />
+                            </div>
+                            :
+                            <>
+                                {allProducts?.map((product, index) => {
+                                    return (
+                                        <div className="h-full col-product min-w-[30%]" key={product.id}>
+                                            <div className="content-img-product  bg-bgImgProduct rounded-[26px] mb-2 flex justify-center items-center flex-col relative cursor-pointer">
+                                                <div className="flex items-center justify-center w-[204px] h-[266px] col-img">
+                                                    <img src={product?.images[0]} alt="product-img" className="object-contain w-full h-full" />
+                                                </div>
+                                            </div>
+                                            <div className="information-product">
+                                                <h3 className="title-product text-[18px] font-bold text-headingcolor mb-2 capitalize">
+                                                    {product.title}
+                                                </h3>
+                                                <div className="col-rating flex gap-[6px] items-center mb-2">
+                                                    <div className="flex items-center all-stars gap-[6px]">
+                                                        <div className="flex items-center gap-[2px]">
+                                                            <FaStar className="text-starColor" />
+                                                            <FaStar className="text-starColor" />
+                                                            <FaStar className="text-starColor" />
+                                                            <FaStar className="text-starColor" />
+                                                            <FaStar className="text-starColor" />
+
+                                                        </div>
+                                                        <p className="text-[13px] text-gray900 font-bold">{product.rating}</p>
+                                                    </div>
+                                                    <p className="text-[13px] text-gray600">{`(${product.rating}Ratings)`}</p>
+                                                </div>
+                                                <div className="buy-now-btn w-full h-[48px] bg-headingcolor rounded-lg flex justify-center items-center cursor-pointer text-sm font-medium">
+                                                    <p className="text-whiteColor">BUY NOW-</p>
+                                                    <span className="text-primary500">{`₹${product.price}`}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                            </>
+                        }
                     </div>
                 </div>
             </section>

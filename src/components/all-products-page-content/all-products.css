@@ -8,3 +8,11 @@
 .all-products-section .container .filter-list-products span.check{
     background-color: black;
 }
+@media (max-width: 1800px){
+    .all-products-section .container .filter-list-products{
+        width: 220px;
+    }
+    .all-products-section .container .all-products{
+         width: calc(100% - 220px);
+    }
+}
