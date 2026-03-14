@@ -1,19 +1,15 @@
 import { FaPlus, FaMinus } from "react-icons/fa6";
 import { FaCheck } from "react-icons/fa";
 import "./all-products.css";
-import { useEffect, useState } from "react";
-import { FaTh } from "react-icons/fa";
-import { FaThList } from "react-icons/fa";
+import { useEffect, useMemo, useState } from "react";
 import returnIcon from "../../assets/return-home.svg";
 import { Link } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 import { OrbitProgress } from "react-loading-indicators";
 function AllProducts() {
-    const [showBrand, setShowBrand] = useState(true);
+    const [showBrand, setShowBrand] = useState(false);
     const [showCategory, setShowCategory] = useState(true);
-    const [showPrice, setShowPrice] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState(null);
-    const [selectedPrice, setSelectedPrice] = useState(null);
     const [selectedBrand, setSelectedBrand] = useState(null);
     const [allProducts, setAllProducts] = useState([]);
 
@@ -25,8 +21,6 @@ function AllProducts() {
     useEffect(() => {
         getAllProductts()
     }, [])
-
-    console.log(allProducts);
 
     const allBrands = [
         { id: 1, brand: "Apple" },
@@ -51,20 +45,18 @@ function AllProducts() {
         { id: 7, category: "sports-accessories" },
     ]
 
-    const allRangePrice = [
-        { id: 1, price: "₹5 - ₹100" },
-        { id: 1, price: "₹100 - ₹200" },
-        { id: 1, price: "₹200 - ₹300" },
-        { id: 1, price: "₹300 - ₹400" },
-        { id: 1, price: "₹400 - ₹500" },
-        { id: 1, price: "₹500 - ₹700" }
-    ]
 
-    const AppleProducts = allProducts.filter((product) => product.brand === "Apple");
-    const HuaweiProducts = allProducts.filter((product) => product.brand === "Huawei");
-    const LenovoProducts = allProducts.filter((product) => product.brand === "Lenovo");
-    const DellProducts = allProducts.filter((product) => product.brand === "Dell");
-    console.log(DellProducts);
+    //get all categories products 
+    const laptops = allProducts.filter((product) => product.category == "laptops");
+    const smartphones = allProducts.filter((product) => product.category == "smartphones");
+    const mobileaccessories = allProducts.filter((product) => product.category == "mobile-accessories");
+    const tablets = allProducts.filter((product) => product.category == "tablets");
+    const menswatches = allProducts.filter((product) => product.category == "mens-watches");
+    const womenswatches = allProducts.filter((product) => product.category == "womens-watches");
+    const sportsaccessories = allProducts.filter((product) => product.category == "sports-accessories");
+
+    const allProductsElectronic = [...laptops,  ...smartphones, ...mobileaccessories, ...tablets, ...menswatches, ...womenswatches, ...sportsaccessories];
+    
 
     return (
         <>
@@ -81,30 +73,6 @@ function AllProducts() {
             <section className="w-full h-full mt-10 mb-10 all-products-section">
                 <div className="container min-w-[100%] h-full flex gap-5">
                     <div className="flex flex-col gap-2 filter-list-products">
-                        <div className="flex items-center justify-between w-full col-brand border-b-[1px] border-borderColor">
-                            <p className="text-[16px] text-darkColor font-medium capitalize cursor-pointer" onClick={() => setShowBrand(!showBrand)}>Brand</p>
-                            {showBrand ?
-                                <FaMinus className="cursor-pointer text-darkColor" onClick={() => setShowBrand(!showBrand)} />
-                                :
-                                <FaPlus className="cursor-pointer text-darkColor" onClick={() => setShowBrand(!showBrand)} />
-                            }
-                        </div>
-                        {showBrand ?
-                            <div className="flex flex-col gap-1 all-brands">
-                                {allBrands.map((brand, index) => {
-                                    return (
-                                        <div className="flex items-center gap-2 brand" key={brand.id} onClick={() => setSelectedBrand(brand.brand)}>
-                                            <span className={`${selectedBrand === brand.brand ? "check" : ""} w-[15px] h-[15px] rounded-sm border-[1px] border-checkcolor cursor-pointer flex justify-center items-center`}>
-                                                <FaCheck className="text-[12px] text-white" />
-                                            </span>
-                                            <p className="text-[16px] font-medium text-checkcolor cursor-pointer">{brand.brand}</p>
-                                        </div>
-                                    )
-                                })}
-                            </div>
-                            :
-                            null
-                        }
                         <div className="col-category flex items-center justify-between w-full  border-b-[1px] border-borderColor">
                             <p className="text-[16px] text-darkColor font-medium capitalize cursor-pointer" onClick={() => setShowCategory(!showCategory)}>category</p>
                             {showCategory ?
@@ -118,7 +86,10 @@ function AllProducts() {
                                 {allCategories.map((category, index) => {
                                     return (
                                         <div className="flex items-center gap-2 category" key={category.id}
-                                            onClick={() => setSelectedCategory(category.category)}
+                                            onClick={() => {
+                                                    setSelectedCategory(category.category)
+                                                }
+                                            }
                                         >
                                             <span className={`${selectedCategory === category.category ? "check" : ""} w-[15px] h-[15px] rounded-sm border-[1px] border-checkcolor cursor-pointer flex justify-center items-center`}>
                                                 <FaCheck className="text-[14px] text-white" />
@@ -131,23 +102,25 @@ function AllProducts() {
                             :
                             null
                         }
-                        <div className="col-price flex items-center justify-between w-full  border-b-[1px] border-borderColor">
-                            <p className="text-[16px] text-darkColor font-medium capitalize cursor-pointer" onClick={() => setShowPrice(!showPrice)}>Price Range</p>
-                            {showPrice ?
-                                <FaMinus className="cursor-pointer text-darkColor" onClick={() => setShowPrice(!showPrice)} />
+                        <div className="flex items-center justify-between w-full col-brand border-b-[1px] border-borderColor">
+                            <p className="text-[16px] text-darkColor font-medium capitalize cursor-pointer" onClick={() => setShowBrand(!showBrand)}>Brand</p>
+                            {showBrand ?
+                                <FaMinus className="cursor-pointer text-darkColor" onClick={() => setShowBrand(!showBrand)} />
                                 :
-                                <FaPlus className="cursor-pointer text-darkColor" onClick={() => setShowPrice(!showPrice)} />
+                                <FaPlus className="cursor-pointer text-darkColor" onClick={() => setShowBrand(!showBrand)} />
                             }
                         </div>
-                        {showPrice ?
-                            <div className="flex flex-col gap-1 all-prices-range">
-                                {allRangePrice.map((price, index) => {
+                        {showBrand ?
+                            <div className="flex flex-col gap-1 all-brands">
+                                {allBrands.map((brand, index) => {
                                     return (
-                                        <div className="flex items-center gap-2 price" key={price.id} onClick={() => setSelectedPrice(price.price)}>
-                                            <span className={`${selectedPrice === price.price ? "check" : ""} w-[15px] h-[15px] rounded-sm border-[1px] border-checkcolor cursor-pointer flex justify-center items-center`}>
-                                                <FaCheck className="text-[14px] text-white" />
+                                        <div className="flex items-center gap-2 brand" key={brand.id} onClick={() => 
+                                                setSelectedBrand(brand.brand)
+                                        }>
+                                            <span className={`${selectedBrand === brand.brand ? "check" : ""} w-[15px] h-[15px] rounded-sm border-[1px] border-checkcolor cursor-pointer flex justify-center items-center`}>
+                                                <FaCheck className="text-[12px] text-white" />
                                             </span>
-                                            <p className="text-[15px] font-medium text-checkcolor cursor-pointer">{price.price}</p>
+                                            <p className="text-[16px] font-medium text-checkcolor cursor-pointer">{brand.brand}</p>
                                         </div>
                                     )
                                 })}
@@ -163,13 +136,13 @@ function AllProducts() {
                         </div>
                     </div>
                     <div className="flex flex-wrap h-full gap-5 all-products">
-                        {allProducts.length === 0 ?
+                        {allProductsElectronic.length === 0 ?
                             <div className="col-loading w-full h-[1000px] flex justify-center items-center">
                                 <OrbitProgress color="#FA8232" size="medium" text="" textColor="" />
                             </div>
                             :
                             <>
-                                {allProducts?.map((product, index) => {
+                                {allProductsElectronic?.map((product, index) => {
                                     return (
                                         <div className="h-full col-product min-w-[30%]" key={product.id}>
                                             <div className="content-img-product  bg-bgImgProduct rounded-[26px] mb-2 flex justify-center items-center flex-col relative cursor-pointer">

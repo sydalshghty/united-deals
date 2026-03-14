@@ -28,7 +28,8 @@ function TodaysDealsProducts() {
             )
                 .sort((a, b) => b.price - a.price)
         )
-    }, [products])
+    }, [products]);
+    
     return (
         <>
             <section className="todays-deals-products mt-[40px] mb-[40px] w-full h-full">
