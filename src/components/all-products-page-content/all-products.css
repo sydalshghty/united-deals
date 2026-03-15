@@ -87,7 +87,8 @@
 }
 
 @media (max-width: 768px){   
-    .all-products-section .container .all-products .col-product{
+    .all-products-section .container .all-products .col-product,
+    .all-products-section .container .all-products .col-product .col-img{
         width: 100%;
     }
 }
