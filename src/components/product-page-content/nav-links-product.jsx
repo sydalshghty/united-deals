@@ -16,7 +16,7 @@ function NavLinksProduct() {
                         <img src={CaretRightIcon} alt="right-icon" />
                     </li>
                     <li className="flex items-center gap-2">
-                        <Link to={"#"} className="text-[15px] font-medium capitalize text-gray600">
+                        <Link to={`/all-products`} className="text-[15px] font-medium capitalize text-gray600">
                             shop
                         </Link>
                         <img src={CaretRightIcon} alt="right-icon" />
