@@ -23,7 +23,6 @@ function HomePage() {
                 <TopElectronicsBrands />
                 <FeaturedProducts />
                 <NewAppleBanner />
-                <BestProducts />
                 <EmailAddress />
                 <Footer />
             </div>
