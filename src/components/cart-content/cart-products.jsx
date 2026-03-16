@@ -14,23 +14,23 @@ function CartProducts() {
 
     return (
         <section className="w-full h-full cart-products mb-[72px]">
-            <div className="container min-w-[100%] h-full flex justify-between flex-wrap">
-                <div className="all-products-cart">
-                    <div className="col-number-items flex items-center gap-[5px] mb-[33px]">
-                        <h2 className="text-xl font-bold text-textcolorPrimary">Number of Items</h2>
-                        <span className="text-lg number-items text-textcolorLight">{state.length}</span>
-                    </div>
-                    <div className="all-products flex flex-col gap-[25px] min-w-full">
-                        {state.map((product,index) => {
-                            return(
-                                <div className="flex  col-product items-center min-w-[600px] justify-between" key={product.id}>
-                                    <div className="flex items-center gap-4 image-title-product">
-                                        <div className="image-product min-w-[90px] h-[72px] shadow-lg p-[2px] rounded-[10px] border-[1px] border-textColor flex justify-center items-center bg-slate-50">
-                                            <img src={product.images[0]} alt="img-product" className="object-contain w-full h-full" />
-                                        </div>
-                                        <h2 className="text-[15px] font-bold text-textcolorPrimary">{product.title.slice(0,8)}</h2>
+            <div className="container min-w-[100%] h-full flex justify-between flex-wrap gap-5">
+                <div className="col-number-items flex items-center gap-[5px] mb-[33px]">
+                    <h2 className="text-xl font-bold text-textcolorPrimary">Number of Items</h2>
+                    <span className="text-lg number-items text-textcolorLight">{state.length}</span>
+                </div>
+                <div className="all-products flex flex-col gap-[25px] min-w-full">
+                    {state.map((product,index) => {
+                        return(
+                            <div className="flex w-full col-product items-center justify-between" key={product.id}>
+                                <div className="flex items-center gap-4 image-title-product w-[400px]">
+                                    <div className="image-product min-w-[90px] h-[72px] shadow-lg p-[2px] rounded-[10px] border-[1px] border-textColor flex justify-center items-center bg-slate-50">
+                                        <img src={product.images[0]} alt="img-product" className="object-contain w-full h-full" />
                                     </div>
-                                    <span className="price-product text-[15px] text-colorPrice">{`₹${product.price}`}</span>
+                                    <h2 className="text-[15px] font-bold text-textcolorPrimary">{product.title}</h2>
+                                </div>
+                                <span className="price-product text-[15px] text-colorPrice">{`₹${product.price}`}</span>
+                                <div className="content-last flex items-center gap-5 w-[40%] justify-between">
                                     <div className="flex items-center col-quantity w-[105px] h-[42px] pt-[10px] pb-[10px] pl-[16px] pr-[16px] border-[1px] border-textColor rounded-[4px] gap-[10px] justify-center">
                                         <FaMinus className="transition-colors duration-500 cursor-pointer hover:text-textcolorLight"
                                             onClick={() => {
@@ -53,9 +53,9 @@ function CartProducts() {
                                         <img src={deleteIcon} alt="delete-icon" />
                                     </div>
                                 </div>
-                           )
-                        })}
-                    </div>
+                            </div>
+                        )
+                    })}
                 </div>
                 <div className="shadow-sm order-summary bg-bgSummary w-[309px] h-[365px] pt-5 pb-5 pl-10 pr-10 rounded-lg flex flex-col gap-7">
                     <h2 className="text-base font-bold text-textcolorPrimary">Order Summary</h2>

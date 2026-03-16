@@ -37,9 +37,6 @@
     .center-header-cart .container .col-deals{
         display: none;
     }
-    .cart-products .container .col-product{
-        gap: 20px;
-    }
 }
 @media (max-width: 768px){
     .center-header-cart .container .col-logo h1{
@@ -53,12 +50,6 @@
     }
     .back-heading-cart .container .col-heading p{
         font-size: 20px;
-    }
-    .cart-products .container .col-product{
-        gap: 20px;
-    }
-    .cart-products .container .col-product h2{
-        font-size: 13px;
     }
 }
 @media (max-width: 520px){
@@ -107,18 +98,49 @@
         gap: 10px;
     }
 }
-/*Style Product Slider*/
-.products-slider .container .all-products .col-product button{
-    transition: background-color 0.5s ease;
+.cart-products .container .col-product{
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
 }
-.products-slider .container .all-products .col-product button:hover{
-    background-color: #FF2E00;
+@media (max-width: 768px){
+    .cart-products .container .col-product .image-title-product{
+        width: 200px;
+    }
+    .cart-products .container .col-product .image-title-product .image-product{
+        min-width: 80px;
+        height: 60px;
+    }
+    .cart-products .container .col-product .image-title-product h2{
+        font-size: 13px;
+    }
+     .cart-products .container .col-product span{
+        font-size: 14px;
+    }
+    .cart-products .container .col-product .delete-product{
+        min-width: 20px;
+    }
+    .cart-products .container .col-product .col-quantity{
+        width: 70px;
+        height: 30px;
+        gap: 5px;
+        padding: 3px;
+        font-size: 12px;
+    }
 }
-.products-slider .container .all-products .col-product button svg,
-.products-slider .container .all-products .col-product button p{
-    transition: color 0.5s ease;
+@media (max-width: 600px){
+    .cart-products .container .col-product{
+        flex-wrap: wrap;
+        gap: 0px;
+    }
+    .cart-products .container .col-product .image-title-product{
+        width: 350px;
+    }
+    .cart-products .container .col-product .content-last{
+        margin-left: 100px;
+    }
 }
-.products-slider .container .all-products .col-product button:hover svg,
-.products-slider .container .all-products .col-product button:hover p{
-    color: white;
+@media (max-width: 520px){
+    .cart-products .container .col-product .image-title-product{
+        width: 250px;
+    }
 }
