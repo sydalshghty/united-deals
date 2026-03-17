@@ -70,7 +70,8 @@ body {
     .home-page-content,
     .product-page-content,
     .cart-page-content,
-    .all-products-page{
+    .all-products-page,
+    .wishlist-page-content{
         margin-top: 125px;
     }
 }

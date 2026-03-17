@@ -10,7 +10,7 @@ function Footer() {
         <footer className="w-full h-full bg-gray900 pt-[72px] pb-[72px]">
             <div className="container flex justify-between min-w-[100%] h-full flex-wrap gap-10">
                 <div className="col-one">
-                    <Link to={`/`} onClick={() => window.scrollTo({top: 0, behavior: "smooth"})}>
+                    <Link to={`/`} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
                         <img src={logoImg} alt="logo" className="cursor-pointer mb-7" />
                     </Link>
                     <div className="flex flex-col gap-1 mb-5 customer-support">
@@ -42,9 +42,9 @@ function Footer() {
                             <li>
                                 <a href="#" className="font-sans text-sm font-medium transition-colors duration-500 text-gray400 hover:text-white">TV & Homes</a>
                             </li>
-                            <Link to={`/all-products`} onClick={() => window.scrollTo({top: 0, behavior: "smooth"})}>
+                            <Link to={`/all-products`} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
                                 <div className="go-to-products flex gap-2 items-center justify-center h-[32px]">
-                                    <a href="#" className="font-sans text-sm font-medium text-primary500">Browse All Product</a>
+                                    <p className="font-sans text-sm font-medium text-primary500">Browse All Product</p>
                                     <FaArrowRight className="cursor-pointer text-primary500" />
                                 </div>
                             </Link>

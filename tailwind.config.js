@@ -53,6 +53,7 @@ export default {
         bgCategory: "#F5F5F5",
         darkColor: "#13101E",
         checkcolor: "#626262",
+        bgAddToCart: "#1877F2",
       }
     },
   },

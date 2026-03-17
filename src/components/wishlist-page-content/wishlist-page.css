@@ -1,0 +1,18 @@
+/*back-content Style*/
+@media (max-width: 992px){
+    .back-content{
+        margin-top: 20px;
+    }
+}
+@media (max-width: 768px){
+    .back-content .container .col-back .return-img{
+        width: 45px;
+    }
+    .back-content .container .col-back .share-img{
+        width: 25px;
+    }
+    .back-content .container .wishlist-title{
+        font-size: 28px;
+        margin-top: 10px;
+    }
+}

@@ -1,3 +1,15 @@
+.center-header-cart .container .col-wishlist:hover span,
+.center-header-cart .container .col-cart:hover span{
+    background-color: #FA8232;
+}
+.center-header-cart .container .col-wishlist:hover svg,
+.center-header-cart .container .col-cart:hover svg{
+    color: #FA8232;
+}
+.center-header-cart .container .col-wishlist,
+.center-header-cart .container .col-cart{
+    transition: background-color 0.5s ease;
+}
 /*center header cart style*/
 @media (min-width: 992px){
     .center-header-cart .container .search-icon,
