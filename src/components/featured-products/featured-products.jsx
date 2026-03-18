@@ -9,6 +9,7 @@ import { Element } from "react-scroll";
 import { OrbitProgress } from "react-loading-indicators";
 import { Link } from "react-router-dom";
 import { addToCart } from "../../store/slices.jsx/cart-products-slice";
+import { addHeartProduct } from "../../store/slices.jsx/HeartSlice";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 import ViewAllButton from "../view-all-btn/view-all-btn";
@@ -68,13 +69,18 @@ function FeaturedProducts() {
                                                     <div className="all-images w-[202px] h-[172px] relative mb-5">
                                                         <img src={product.images[0]} alt="product-img" className="object-contain w-full h-full" />
                                                         <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full gap-2 h-c-v-icons">
-                                                            <div className="col-heart w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
+                                                            <div className="col-heart w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer"
+                                                                onClick={() => {
+                                                                    dispatch(addHeartProduct(product));
+                                                                    toast.success("Added to Wishlist successfully");
+                                                                }}
+                                                            >
                                                                 <FaRegHeart className="w-5 h-5 text-black" />
                                                             </div>
                                                             <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer"
                                                                 onClick={() => {
                                                                     dispatch(addToCart(product));
-                                                                    toast.success("Added to cart successfully");
+                                                                    toast.success("Added to Cart successfully");
                                                                 }}
                                                             >
                                                                 <FiShoppingCart className="w-5 h-5 text-black" />

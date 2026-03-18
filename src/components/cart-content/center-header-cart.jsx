@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 import "./cart-style.css";
 function CenterHeaderCart() {
     const numCartProducts = useSelector(state => state.cartProducts.cartProducts.length);
+    const heartLength = useSelector(state => state.heartsProducts.heartsProducts.length);
 
     const [search, setSearch] = useState("");
     const [products, setProducts] = useState([]);
@@ -114,7 +115,7 @@ function CenterHeaderCart() {
                             <div className="relative cursor-pointer col-wishlist">
                                 <FaRegHeart className="w-[20px] h-[20px] text-black hover:text-primary500 transition-colors duration-500" />
                                 <span className="absolute top-[-10px] left-[12px] w-4 h-4 text-white bg-blackcolor rounded-full number-cart flex justify-center items-center text-[12px] font-sans">
-                                    0
+                                    {heartLength}
                                 </span>
                             </div>
                         </Link>

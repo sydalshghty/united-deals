@@ -4,22 +4,26 @@ const initialState = {
     heartsProducts: JSON.parse(localStorage.getItem("hearts")) || [],
 }
 
-const heartSlice = createSlice({  
-    name: "Heart-Slice",    
+const heartSlice = createSlice({
+    name: "Heart-Slice",
     initialState,
     reducers: {
-        addHeartProduct: (state,action) => {
+        addHeartProduct: (state, action) => {
             const product = action.payload;
 
             const exists = state.heartsProducts.find(item => item.id === product.id);
 
-            if (exists) return ;
- 
+            if (exists) return;
+
             state.heartsProducts.push(product);
 
+            localStorage.setItem("hearts", JSON.stringify(state.heartsProducts));
+        },
+        removeProductHeart: (state, action) => {
+            state.heartsProducts = state.heartsProducts.filter(item => item.id !== action.payload);
             localStorage.setItem("hearts", JSON.stringify(state.heartsProducts));
         }
     }
 })
-export const { addHeartProduct } = heartSlice.actions;
+export const { addHeartProduct, removeProductHeart } = heartSlice.actions;
 export default heartSlice.reducer;
