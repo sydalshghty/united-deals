@@ -1,13 +1,13 @@
 import bannerImg1 from "../../assets/Banner.png";
 import bannerImg2 from "../../assets/Banner (1).png";
 import "./new-apple-banner.css";
-import { Link } from "react-scroll";
+import { Link } from "react-router-dom";
 function NewAppleBanner() {
     return (
-        <Link to="flash-products"
-            smooth={true}
-            duration={500}
-            offset={-140}
+        <Link to={`all-products`} 
+            onClick={() => {
+                window.scrollTo({top: 0, behavior: "smooth"})
+            }}
         >
             <section className="w-full h-full new-apple-banner mb-[40px]">
                 <div className="container min-w-[100%] flex gap-6">

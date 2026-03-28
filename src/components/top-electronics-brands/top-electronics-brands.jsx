@@ -1,4 +1,3 @@
-import ViewAllButton from "../view-all-btn/view-all-btn";
 import brandImg1 from "../../assets/brand-img-1.png";
 import brandImg2 from "../../assets/brand-img-2.png";
 import brandImg3 from "../../assets/brand-img-3.png";
@@ -9,7 +8,6 @@ function TopElectronicsBrands() {
             <div className="container min-w-[100%] h-full">
                 <div className="flex items-center justify-between w-full col-heading border-b-[1px] border-textColor pb-5">
                     <h1 className="sm:text-[22px] md:text-[25px] lg:text-[28px] font-bold text-headingcolor uppercase">Top<span className="text-primary500">Electronics Brands</span></h1>
-                    <ViewAllButton />
                 </div>
                 <div className="flex w-full gap-5 mt-5 all-brands-img">
                     <div className="col-brand">

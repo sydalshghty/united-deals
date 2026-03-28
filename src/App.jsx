@@ -6,6 +6,7 @@ import AllProductsPage from "./pages/all-Products-Page";
 import WishlistPage from "./pages/wishlist-page";
 import { Toaster } from "react-hot-toast";
 import TopButton from "./components/top-btn";
+import NavbarBottom from "./components/navbar-bottom";
 function App() {
   return (
     <>
@@ -18,6 +19,7 @@ function App() {
       </Routes>
       <Toaster position="top-right" />
       <TopButton />
+      <NavbarBottom/>
     </>
   )
 }

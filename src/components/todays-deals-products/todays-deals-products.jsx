@@ -41,15 +41,15 @@ function TodaysDealsProducts() {
                         </Link>
                     </div>
                     {electroProducts.length === 0 ?
-                        <div className="col-loading w-full h-[400px] flex justify-center items-center">
-                            <OrbitProgress color="#FA8232" size="medium" text="" textColor="" />
+                        <div className="col-loading w-full sm:h-[200px] lg:h-[350px] flex justify-center items-center">
+                            <OrbitProgress color="#FA8232" size="small" text="" textColor="" />
                         </div>
                         :
                         <div className="flex items-center justify-center w-full h-full all-products-deals">
                             <Swiper
                                 className="flex items-center justify-center w-full h-full"
                                 modules={[Autoplay]}
-                                slidesPerView={1}
+                                slidesPerView={2}
                                 spaceBetween={20}
                                 speed={500}
                                 loop={true}
@@ -57,12 +57,12 @@ function TodaysDealsProducts() {
                                     { delay: 2000, pauseOnMouseEnter: true }
                                 }
                                 breakpoints={{
-                                    450: { slidesPerView: 1 },
+                                    450: { slidesPerView: 2 },
                                     600: { slidesPerView: 2 },
-                                    768: { slidesPerView: 2 },
+                                    768: { slidesPerView: 3 },
                                     992: { slidesPerView: 3 },
                                     1400: { slidesPerView: 4 },
-                                    1600: { slidesPerView: 5 }
+                                    1600: { slidesPerView: 6 }
                                 }}
                             >
                                 {electroProducts.map((product, index) => {
@@ -75,15 +75,15 @@ function TodaysDealsProducts() {
                                                         <div className="absolute top-0 left-0 col-new w-fit h-fit">
                                                             <img src={NewImg} alt="new" className="object-contain w-full h-full" />
                                                         </div>
-                                                        <div className="flex items-center justify-center w-[204px] h-[266px] col-img">
+                                                        <div className="flex items-center justify-center w-[204px] h-[266px]  col-img">
                                                             <img src={product?.images[0]} alt="product-img" className="object-contain w-full h-full" />
                                                         </div>
                                                     </div>
                                                     <div className="information-product">
-                                                        <h3 className="title-product text-[18px] font-bold text-headingcolor mb-2">
+                                                        <h3 className="title-product text-[15px] font-bold text-headingcolor mb-2">
                                                             {product.title.slice(0, 25)}
                                                         </h3>
-                                                        <div className="buy-now-btn w-full h-[48px] bg-headingcolor rounded-lg flex justify-center items-center cursor-pointer text-sm font-medium">
+                                                        <div className="buy-now-btn w-full h-[44px] bg-headingcolor rounded-lg flex justify-center items-center cursor-pointer text-[13px] font-bold">
                                                             <p className="text-whiteColor">BUY NOW-</p>
                                                             <span className="text-primary500">{`₹${product.price}`}</span>
                                                         </div>

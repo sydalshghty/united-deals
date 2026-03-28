@@ -13,7 +13,9 @@ import { useSelector } from "react-redux";
 import "./cart-style.css";
 function CenterHeaderCart() {
     const numCartProducts = useSelector(state => state.cartProducts.cartProducts.length);
-    const heartLength = useSelector(state => state.heartsProducts.heartsProducts.length);
+
+    const numheartProducts = useSelector(state => state.heartsProducts.heartsProducts.length);
+    console.log(numheartProducts);
 
     const [search, setSearch] = useState("");
     const [products, setProducts] = useState([]);
@@ -33,7 +35,11 @@ function CenterHeaderCart() {
         <>
             <section className="w-full h-[90px] center-header-cart bg-whiteColor relative">
                 <div className="container min-w-[100%] h-full flex justify-between items-center relative">
-                    <Link to={"/"}>
+                    <Link to={"/"} 
+                        onClick={() => {
+                                window.scrollTo({top: 0, behavior: "smooth"})
+                            }}
+                    >
                         <div className="flex items-center gap-5 cursor-pointer col-logo">
                             <img src={iconLogo} alt="icon-logo-cart" className="cursor-pointer" />
                             <h1 className="text-[30px] font-extrabold uppercase text-black">United Deals</h1>
@@ -111,15 +117,23 @@ function CenterHeaderCart() {
                         <div className="items-center cursor-pointer col-user">
                             <FiUser className="w-[20px] h-[20px] text-black hover:text-primary500 transition-colors duration-500" />
                         </div>
-                        <Link to={`/wishlist`}>
+                        <Link to={`/wishlist`} 
+                            onClick={() => {
+                                window.scrollTo({top: 0, behavior: "smooth"})
+                            }}
+                        >
                             <div className="relative cursor-pointer col-wishlist">
                                 <FaRegHeart className="w-[20px] h-[20px] text-black hover:text-primary500 transition-colors duration-500" />
                                 <span className="absolute top-[-10px] left-[12px] w-4 h-4 text-white bg-blackcolor rounded-full number-cart flex justify-center items-center text-[12px] font-sans">
-                                    {heartLength}
+                                    {numheartProducts}
                                 </span>
                             </div>
                         </Link>
-                        <Link to={"/cart"}>
+                        <Link to={"/cart"}
+                            onClick={() => {
+                                window.scrollTo({top: 0, behavior: "smooth"})
+                            }}
+                        >
                             <div className="flex gap-[6px] col-cart items-center cursor-pointer relative">
                                 <FiShoppingCart className="w-[20px] h-[20px] text-black hover:text-primary500 transition-colors duration-500" />
                                 <span className="absolute top-[-10px] left-[12px] w-4 h-4 text-white bg-blackcolor rounded-full number-cart flex justify-center items-center text-[12px] font-sans">

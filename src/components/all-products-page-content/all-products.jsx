@@ -5,7 +5,13 @@ import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 import { OrbitProgress } from "react-loading-indicators";
+import { useSearchParams } from "react-router-dom";
 function AllProducts() {
+    const [searchParams] = useSearchParams();
+    const category = searchParams.get("category");
+    
+    console.log({"category": category});
+
     const [allProducts, setAllProducts] = useState([]);
     const [showCategory, setShowCategory] = useState(true);
     const [selectedCategory, setSelectedCategory] = useState(null);
@@ -57,6 +63,12 @@ function AllProducts() {
         filteredProducts.sort((a, b) => b.price - a.price);
     }
 
+   useEffect(() => {
+        if(category){
+            setSelectedCategory(category)
+        }
+    },[category]);
+
     return (
         <>
             <section className="w-full h-full mt-5 mb-10 all-products-section">
@@ -104,8 +116,8 @@ function AllProducts() {
                     </div>
                     <div className="flex flex-wrap h-full gap-5 all-products">
                         {filteredProducts.length === 0 ?
-                            <div className="col-loading w-full h-[1000px] flex justify-center items-center">
-                                <OrbitProgress color="#FA8232" size="medium" text="" textColor="" />
+                            <div className="col-loading w-full  h-[350px] flex justify-center items-center">
+                                <OrbitProgress color="#FA8232" size="small" text="" textColor="" />
                             </div>
                             :
                             <>

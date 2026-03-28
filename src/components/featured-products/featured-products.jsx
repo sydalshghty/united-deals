@@ -1,5 +1,4 @@
 import "./featured-products.css";
-import { FaArrowRight } from "react-icons/fa6";
 import { FaRegHeart } from "react-icons/fa6";
 import { FiShoppingCart } from "react-icons/fi";
 import { FiEye } from "react-icons/fi";
@@ -13,7 +12,7 @@ import { addHeartProduct } from "../../store/slices.jsx/HeartSlice";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 import ViewAllButton from "../view-all-btn/view-all-btn";
-
+//import { addHeartProduct } from "../../store/slices.jsx/HeartSlice";
 function FeaturedProducts() {
     const dispatch = useDispatch();
 
@@ -56,8 +55,8 @@ function FeaturedProducts() {
                             </Link>
                         </div>
                         {allProducts.length === 0 ?
-                            <div className="col-loading w-full min-h-[400px] flex justify-center items-center">
-                                <OrbitProgress color="#FA8232" size="medium" text="" textColor="" />
+                            <div className="col-loading w-full  sm:h-[200px] lg:h-[350px] flex justify-center items-center">
+                                <OrbitProgress color="#FA8232" size="small" text="" textColor="" />
                             </div>
                             :
                             <div className="flex flex-wrap gap-4 mt-6 all-featured-products">
@@ -71,8 +70,8 @@ function FeaturedProducts() {
                                                         <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full gap-2 h-c-v-icons">
                                                             <div className="col-heart w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer"
                                                                 onClick={() => {
-                                                                    dispatch(addHeartProduct(product));
-                                                                    toast.success("Added to Wishlist successfully");
+                                                                    dispatch(addHeartProduct(product))
+                                                                    toast.success("Added to wishlist successfully");
                                                                 }}
                                                             >
                                                                 <FaRegHeart className="w-5 h-5 text-black" />
