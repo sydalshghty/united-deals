@@ -2,7 +2,7 @@ import { FaStar } from "react-icons/fa6";
 import { useState, useEffect } from "react";
 import { OrbitProgress } from "react-loading-indicators";
 import { Link } from "react-router-dom";
-
+import "../todays-deals-products/todays-deals-products.css";
 function FrequentlyProducts() {
     const [products, setProducts] = useState([]);
     const getAllProducts = async () => {
@@ -32,27 +32,27 @@ function FrequentlyProducts() {
                     <h2 className="text-[26px] text-black uppercase font-bold">frequently bought together</h2>
                     <button className="w-[117px] h-[43px] bg-primary500 rounded-lg text-[14px] text-white font-medium">VIEW ALL</button>
                 </div>
-                <div className="all-frequently-products w-full flex gap-[14px] mt-5 mb-5 flex-wrap">
+                <div className="w-full mt-5 mb-5 all-frequently-products">
                     {sortElectroProducts.length === 0 ?
                         <div className="col-loading w-full min-h-[400px] flex justify-center items-center">
                             <OrbitProgress color="#FA8232" size="medium" text="" textColor="" />
                         </div>
                         :
-                        <div className="flex flex-wrap items-center justify-center w-full gap-5 all-products">
+                        <div className="flex flex-wrap justify-center w-full h-full gap-5 all-products">
                             {sortElectroProducts.map((product, index) => {
                                 return (
                                     <Link to={`/Product/${product.id}`} key={product.id}>
-                                        <div className="col-product"
+                                        <div className="h-full col-product"
                                             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                                         >
 
-                                            <div className="col-img-product w-[280px] h-[250px] rounded-[25px] bg-bgImgProduct flex justify-center items-center mb-2">
+                                            <div className="col-img-product rounded-[25px] bg-bgImgProduct flex justify-center items-center mb-2">
                                                 <div className="col-img w-[220px]">
                                                     <img src={product.images[0]} alt="product-img" className="object-contain w-full h-full" />
                                                 </div>
                                             </div>
                                             <div className="flex flex-col gap-2 information-product">
-                                                <h2 className="text-[18px] text-darkgray font-semibold">{product.title.slice(0, 18)}</h2>
+                                                <h3 className="text-[15px] text-darkgray font-bold">{product.title.slice(0, 18)}</h3>
                                                 <div className="col-rating flex gap-[5px] items-center">
                                                     <div className="all-stars flex items-center gap-[2px]">
                                                         <FaStar className="text-starColor" />
@@ -60,7 +60,7 @@ function FrequentlyProducts() {
                                                         <FaStar className="text-starColor" />
                                                         <FaStar className="text-starColor" />
                                                         <FaStar className="text-starColor" />
-                                                        <p className="rate-p text-[13px] text-gray900 font-semibold">{product.rating}</p>
+                                                        <p className="rate-p text-[13px] text-gray900 font-semibold">{`(${product.rating})`}</p>
                                                     </div>
                                                     <div className="rating text-[13px]  text-gray600">
                                                         (21,671 Ratings)

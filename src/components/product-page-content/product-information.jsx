@@ -25,6 +25,7 @@ import basataIcon from "../../assets/baceta-icon.svg";
 import { addToCart } from "../../store/slices.jsx/cart-products-slice";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
+import { addHeartProduct } from "../../store/slices.jsx/HeartSlice";
 function ProductInformation() {
     const dispatch = useDispatch();
     const swiperRef = useRef(null);
@@ -161,7 +162,9 @@ function ProductInformation() {
                                     <div className="flex items-center justify-between col-wishlist-share">
                                         <div className="col-wishlist flex gap-[6px] items-center cursor-pointer"
                                             onClick={() => {
-                                                setShowHeart(false)
+                                                setShowHeart(false);
+                                                dispatch(addHeartProduct(product));
+                                                toast.success("Product Added to wishlist successfully")
                                             }}
                                         >
                                             {showHeart ?

@@ -65,10 +65,10 @@ function FeaturedProducts() {
                                         {allElectroProducts.map((product, index) => {
                                             return (
                                                 <div className="col-product w-[234px] h-[320px] rounded-[3px] p-3" key={product.id}>
-                                                    <div className="all-images w-[202px] h-[172px] relative mb-5">
+                                                    <div className="all-images w-[202px] h-[172px] relative mb-3 ml-auto mr-auto">
                                                         <img src={product.images[0]} alt="product-img" className="object-contain w-full h-full" />
                                                         <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full gap-2 h-c-v-icons">
-                                                            <div className="col-heart w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer"
+                                                            <div className="col-heart w-[42px] h-[42px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer"
                                                                 onClick={() => {
                                                                     dispatch(addHeartProduct(product))
                                                                     toast.success("Added to wishlist successfully");
@@ -76,7 +76,7 @@ function FeaturedProducts() {
                                                             >
                                                                 <FaRegHeart className="w-5 h-5 text-black" />
                                                             </div>
-                                                            <div className="col-cart  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer"
+                                                            <div className="col-cart  w-[42px] h-[42px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer"
                                                                 onClick={() => {
                                                                     dispatch(addToCart(product));
                                                                     toast.success("Added to Cart successfully");
@@ -85,7 +85,7 @@ function FeaturedProducts() {
                                                                 <FiShoppingCart className="w-5 h-5 text-black" />
                                                             </div>
                                                             <Link to={`Product/${product.id}`} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-                                                                <div className="col-view  w-[48px] h-[48px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
+                                                                <div className="col-view  w-[42px] h-[42px] p-3 bg-white rounded-full flex justify-center items-center cursor-pointer">
                                                                     <FiEye className="w-5 h-5 text-black" />
                                                                 </div>
                                                             </Link>
@@ -102,7 +102,7 @@ function FeaturedProducts() {
                                                             </div>
                                                             <p className="text-xs p-rate text-gray500">{`(${product.rating})`}</p>
                                                         </div>
-                                                        <p className="text-sm title-product text-gray900">{product.title}</p>
+                                                        <p className="text-sm title-product text-gray900">{product.title.slice(0, 18)}</p>
                                                         <span className="text-sm font-semibold price-product text-secondary500">{`₹${product.price}`}</span>
                                                     </div>
                                                 </div>

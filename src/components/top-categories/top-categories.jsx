@@ -8,6 +8,7 @@ import { Autoplay } from "swiper/modules";
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import { useNavigate } from "react-router-dom";
+import "./top-categories.css";
 function TopCategories() {
     const navigate = useNavigate();
 
@@ -37,7 +38,7 @@ function TopCategories() {
                         }
                         breakpoints={{
                             450: { slidesPerView: 2 },
-                            600: { slidesPerView: 2 },
+                            600: { slidesPerView: 3 },
                             768: { slidesPerView: 3 },
                             992: { slidesPerView: 4 },
                             1600: { slidesPerView: 5 }
@@ -47,10 +48,10 @@ function TopCategories() {
                             return (
                                 <SwiperSlide key={category.id}>
                                     <div className="col-category flex flex-col gap-[22px] items-center cursor-pointer"
-                                    onClick={() => {
-                                        window.scrollTo({top: 0, behavior: "smooth"})
-                                        navigate(`all-products?category=${category.title}`)
-                                    }}
+                                        onClick={() => {
+                                            window.scrollTo({ top: 0, behavior: "smooth" })
+                                            navigate(`all-products?category=${category.title}`)
+                                        }}
                                     >
                                         <div className="col-img bg-bgCategory p-4 w-[137px] h-[137px] rounded-full">
                                             <img src={category.img} alt="category-img" className="object-contain w-full h-full" />

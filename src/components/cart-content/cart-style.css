@@ -138,6 +138,9 @@
         padding: 3px;
         font-size: 12px;
     }
+    .center-header-cart .container .col-user{
+        display: none;
+    }
 }
 @media (max-width: 600px){
     .cart-products .container .col-product{

@@ -29,7 +29,7 @@ function TodaysDealsProducts() {
                 .sort((a, b) => b.price - a.price)
         )
     }, [products]);
-    
+
     return (
         <>
             <section className="todays-deals-products mt-[40px] mb-[40px] w-full h-full">
@@ -62,7 +62,7 @@ function TodaysDealsProducts() {
                                     768: { slidesPerView: 3 },
                                     992: { slidesPerView: 3 },
                                     1400: { slidesPerView: 4 },
-                                    1600: { slidesPerView: 6 }
+                                    1600: { slidesPerView: 4 }
                                 }}
                             >
                                 {electroProducts.map((product, index) => {

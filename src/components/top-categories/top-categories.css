@@ -1,0 +1,13 @@
+
+@media (max-width: 768px){
+    .top-categories-section .container .all-categories .col-category{
+        gap: 15px;
+    }
+    .top-categories-section .container .all-categories .col-category .col-img{
+        width: 110px;
+        height: 110px;
+    }
+    .top-categories-section .container .all-categories .col-category p{
+        font-size: 13px;
+    }
+}

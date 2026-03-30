@@ -1,17 +1,17 @@
-.todays-deals-products .container .all-products-deals .col-product{
+.todays-deals-products .container .all-products-deals .col-product,
+.frequently-products .container .all-frequently-products .all-products .col-product{
     width: 250px;
     height: 100%;
 }
-.todays-deals-products .container .all-products-deals .col-product .content-img-product{
-  /*  width: 250px;*/
+.todays-deals-products .container .all-products-deals .col-product .content-img-product,
+.frequently-products .container .all-frequently-products .all-products .col-product .col-img-product{
     height: 200px;
 }
-.todays-deals-products .container .all-products-deals .col-product .content-img-product .col-img{
+.todays-deals-products .container .all-products-deals .col-product .content-img-product .col-img,
+.frequently-products .container .all-frequently-products .all-products .col-product .col-img-product .col-img{
     width: 150px;
     height: 100%;
 }
-
-
 @media (max-width: 768px){
    .todays-deals-products{
         margin-top: 20px;
@@ -28,37 +28,63 @@
 }
 
 @media (max-width: 580px){
-    .todays-deals-products .container .all-products-deals .col-product{
+    .frequently-products .container .col-heading h2{
+        font-size: 18px;
+    }
+    .todays-deals-products .container .all-products-deals .col-product,
+    .frequently-products .container .all-frequently-products .all-products .col-product{
         width: 200px;
         height: 100%;
     }
-    .todays-deals-products .container .all-products-deals .col-product .content-img-product{
-    /*  width: 250px;*/
+    .todays-deals-products .container .all-products-deals .col-product .content-img-product,
+    .frequently-products .container .all-frequently-products .all-products .col-product .col-img-product{
         height: 160px;
     }
     .todays-deals-products .container .all-products-deals .col-product .content-img-product .col-new{
         width: 45px;
     }
-    .todays-deals-products .container .all-products-deals .col-product .content-img-product .col-img{
+    .todays-deals-products .container .all-products-deals .col-product .content-img-product .col-img,
+    .frequently-products .container .all-frequently-products .all-products .col-product .col-img-product .col-img{
         width: 120px;
         height: 100%;
+    }
+    .frequently-products .container .all-frequently-products .all-products .col-product .rating{
+        display: none;
     }
 }
 
 @media (max-width: 520px){
-    .todays-deals-products .container .all-products-deals .col-product{
+    .todays-deals-products .container .all-products-deals .col-product,
+    .frequently-products .container .all-frequently-products .all-products .col-product{
         width: 160px;
         height: 100%;
     }
-    .todays-deals-products .container .all-products-deals .col-product .buy-now-btn{
+    .todays-deals-products .container .all-products-deals .col-product .buy-now-btn,
+    .frequently-products .container .all-frequently-products .all-products .col-product .col-buy-now{
         height: 38px;
         font-size: 12px;
     }
-    .todays-deals-products .container .all-products-deals .col-product .content-img-product{
+    .todays-deals-products .container .all-products-deals .col-product .content-img-product,
+    .frequently-products .container .all-frequently-products .all-products .col-product .col-img-product{
         height: 140px;
     }
-    .todays-deals-products .container .all-products-deals .col-product .content-img-product .col-img{
+    .todays-deals-products .container .all-products-deals .col-product .content-img-product .col-img,
+    .frequently-products .container .all-frequently-products .all-products .col-product .col-img-product .col-img{
         width: 100px;
+        height: 100%;
+    }
+}
+
+@media (max-width: 450px){
+    .frequently-products .container .all-frequently-products .all-products .col-product{
+        width: 150px;
+        height: 100%;
+    }
+    .frequently-products .container .all-frequently-products .all-products .col-product .col-img-product{
+        height: 120px;
+    }
+    .frequently-products .container .all-frequently-products .all-products .col-product .col-img-product .col-img{
+        width: 90px;
         height: 100%;
     }
 }

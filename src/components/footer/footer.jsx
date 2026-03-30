@@ -4,7 +4,6 @@ import appleStoreImg from "../../assets/Mobile App (1).png";
 import { FaArrowRight } from "react-icons/fa6";
 import "./footer.css";
 import { Link } from "react-router-dom";
-import { FaChevronDown } from "react-icons/fa";
 function Footer() {
     const allCategories = [
         { id: 1, category: "laptops" },
@@ -34,14 +33,14 @@ function Footer() {
                     <ul className="TopCategory-links">
                         <h2 className="mb-6 font-sans text-base font-medium text-white uppercase">Top Category</h2>
                         <div className="flex flex-col gap-3 all-links">
-                            {allCategories.map((category,index) => {
-                                return(
+                            {allCategories.map((category, index) => {
+                                return (
                                     <li key={category.id}>
-                                        <Link to={`/all-products?category=${category.category}`} 
-                                        onClick={() => {
-                                            window.scrollTo({top: 0, behavior: "smooth"})
-                                        }}
-                                        className="font-sans text-sm font-medium capitalize transition-colors duration-500 text-gray400 hover:text-white">{category.category}</Link>
+                                        <Link to={`/all-products?category=${category.category}`}
+                                            onClick={() => {
+                                                window.scrollTo({ top: 0, behavior: "smooth" })
+                                            }}
+                                            className="font-sans text-sm font-medium capitalize transition-colors duration-500 text-gray400 hover:text-white">{category.category}</Link>
                                     </li>
                                 )
                             })}
@@ -57,28 +56,24 @@ function Footer() {
                         <h2 className="mb-6 font-sans text-base font-medium text-white uppercase">Quick links</h2>
                         <div className="flex flex-col gap-3 all-links">
                             <li>
-                                <Link to={`/`} 
-                                onClick={() => window.scrollTo({top: 0, behavior: "smooth"})}
-                                className="font-sans text-sm font-medium transition-colors duration-500 
-                                text-gray400 hover:text-white capitalize">home</Link>
+                                <Link to={`/`}
+                                    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                                    className="font-sans text-sm font-medium capitalize transition-colors duration-500 text-gray400 hover:text-white">home</Link>
                             </li>
                             <li>
-                                <Link to={`/all-products`} 
-                                onClick={() => window.scrollTo({top: 0, behavior: "smooth"})}
-                                className="font-sans text-sm font-medium transition-colors duration-500 
-                                text-gray400 hover:text-white capitalize">shop</Link>
+                                <Link to={`/all-products`}
+                                    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                                    className="font-sans text-sm font-medium capitalize transition-colors duration-500 text-gray400 hover:text-white">shop</Link>
                             </li>
                             <li>
-                                <Link to={`/cart`} 
-                                onClick={() => window.scrollTo({top: 0, behavior: "smooth"})}
-                                className="font-sans text-sm font-medium transition-colors duration-500 
-                                text-gray400 hover:text-white capitalize">cart</Link>
+                                <Link to={`/cart`}
+                                    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                                    className="font-sans text-sm font-medium capitalize transition-colors duration-500 text-gray400 hover:text-white">cart</Link>
                             </li>
                             <li>
-                                <Link to={`/wishlist`} 
-                                onClick={() => window.scrollTo({top: 0, behavior: "smooth"})}
-                                className="font-sans text-sm font-medium transition-colors duration-500 
-                                text-gray400 hover:text-white capitalize">wishlist</Link>
+                                <Link to={`/wishlist`}
+                                    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                                    className="font-sans text-sm font-medium capitalize transition-colors duration-500 text-gray400 hover:text-white">wishlist</Link>
                             </li>
                         </div>
                     </ul>
