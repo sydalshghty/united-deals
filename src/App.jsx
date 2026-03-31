@@ -7,6 +7,7 @@ import WishlistPage from "./pages/wishlist-page";
 import { Toaster } from "react-hot-toast";
 import TopButton from "./components/top-btn";
 import NavbarBottom from "./components/navbar-bottom";
+import CustomerPage from "./pages/customer-page";
 function App() {
   return (
     <>
@@ -16,10 +17,11 @@ function App() {
         <Route path="Product/:id" element={<ProductPage />} />
         <Route path="all-products" element={<AllProductsPage />} />
         <Route path="wishlist" element={<WishlistPage />} />
+        <Route path="customer-information" element={<CustomerPage />} />
       </Routes>
       <Toaster position="top-right" />
       <TopButton />
-      <NavbarBottom/>
+      <NavbarBottom />
     </>
   )
 }

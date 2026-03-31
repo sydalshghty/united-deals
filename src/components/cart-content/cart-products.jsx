@@ -1,16 +1,17 @@
 import { FaPlus, FaMinus, FaCheck } from "react-icons/fa6";
 import deleteIcon from "../../assets/trash.svg";
 import IconShopSummary from "../../assets/Icon-shop-summary.svg";
-import { useSelector,useDispatch } from "react-redux";
-import { removeProduct,increaseQuantity,decreaseQuantity } from "../../store/slices.jsx/cart-products-slice";
+import { useSelector, useDispatch } from "react-redux";
+import { removeProduct, increaseQuantity, decreaseQuantity } from "../../store/slices.jsx/cart-products-slice";
+import { Link } from "react-router-dom";
 function CartProducts() {
     const dispatch = useDispatch();
     const state = useSelector(state => state.cartProducts.cartProducts);
 
-    const totalPrice = state.reduce((total,product) => {
+    const totalPrice = state.reduce((total, product) => {
         return total + (product.price * product.quantity) - 47.10;
-    },0)
-    .toFixed(2);
+    }, 0)
+        .toFixed(2);
 
     return (
         <section className="w-full h-full cart-products mb-[72px]">
@@ -20,9 +21,9 @@ function CartProducts() {
                     <span className="text-lg number-items text-textcolorLight">{state.length}</span>
                 </div>
                 <div className="all-products flex flex-col gap-[25px] min-w-full">
-                    {state.map((product,index) => {
-                        return(
-                            <div className="flex w-full col-product items-center justify-between" key={product.id}>
+                    {state.map((product, index) => {
+                        return (
+                            <div className="flex items-center justify-between w-full col-product" key={product.id}>
                                 <div className="flex items-center gap-4 image-title-product w-[400px]">
                                     <div className="image-product min-w-[90px] h-[72px] shadow-lg p-[2px] rounded-[10px] border-[1px] border-textColor flex justify-center items-center bg-slate-50">
                                         <img src={product.images[0]} alt="img-product" className="object-contain w-full h-full" />
@@ -90,10 +91,12 @@ function CartProducts() {
                             <span className="text-sm font-bold text-textcolorPrimary">{`₹${totalPrice}`}</span>
                         </div>
                     </div>
-                    <button className="shop-now w-full h-[52px] bg-bgshopnow pt-4 pb-4 pl-8 pr-8 rounded-lg flex justify-center items-center gap-2">
-                        <img src={IconShopSummary} alt="icon-shop" />
-                        <span className="text-sm font-medium text-white">Shop now</span>
-                    </button>
+                    <Link to={`/customer-information`} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+                        <button className="shop-now w-full h-[52px] bg-bgshopnow pt-4 pb-4 pl-8 pr-8 rounded-lg flex justify-center items-center gap-2">
+                            <img src={IconShopSummary} alt="icon-shop" />
+                            <span className="text-sm font-medium text-white">Shop now</span>
+                        </button>
+                    </Link>
                 </div>
             </div>
         </section>

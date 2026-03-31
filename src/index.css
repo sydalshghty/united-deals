@@ -66,12 +66,13 @@ body {
     }
 }
 
-@media (max-width: 992px){
+@media (max-width: 1100px){
     .home-page-content,
     .product-page-content,
     .cart-page-content,
     .all-products-page,
-    .wishlist-page-content{
+    .wishlist-page-content,
+    .Customer-page-content{
         margin-top: 125px;
     }
     .top-button{

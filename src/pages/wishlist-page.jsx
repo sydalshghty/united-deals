@@ -9,7 +9,7 @@ function WishlistPage() {
             <Header />
             <div className="wishlist-page-content mt-[150px]">
                 <BottomHeaderCart />
-                <Back />
+                <Back title="wishlist" />
                 <WishlistProducts />
                 <Footer />
             </div>

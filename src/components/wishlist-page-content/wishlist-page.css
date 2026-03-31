@@ -15,6 +15,9 @@
         font-size: 28px;
         margin-top: 10px;
     }
+    .back-content .container .p-account{
+        font-size: 15px;
+    }
 }
 
 /*update changes*/
@@ -44,6 +47,9 @@
 }
 
 @media (max-width: 520px){
+    .back-content .container .wishlist-title{
+        font-size: 20px;
+    }
     .wishlist-products .container table thead td{
         font-size: 10px;
     }
