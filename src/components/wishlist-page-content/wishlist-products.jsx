@@ -18,7 +18,7 @@ function WishlistProducts() {
                     :
                     <table className="w-full border-[1px] border-borderColor rounded-sm">
                         <thead className="border-b-[1px] border-borderColor h-[37px] bg-gray100 flex items-center justify-between pl-[23px] pr-[23px] pt-[10px] pb-[10px]">
-                            <tr className="w-[40%]">
+                            <tr className="w-[40%] head-one">
                                 <td className="text-[12px] text-gray-700 font-sans font-medium uppercase">Products</td>
                             </tr>
                             <tr>
@@ -31,16 +31,16 @@ function WishlistProducts() {
                                 <td>Actions</td>
                             </tr>
                             <tr></tr>
-                            <tr></tr>
+                            <tr className="last-tr"></tr>
 
                         </thead>
                         <>
                             {heartProducts.map((product, index) => {
                                 return (
                                     <tbody className="flex justify-between w-full pl-[23px] pr-[23px] pt-[10px] pb-[10px] items-center border-b-[1px] border-borderColor" key={product.id}>
-                                        <tr className="w-[40%]">
+                                        <tr className="w-[40%] col-one">
                                             <td className="flex items-center col-img-product gap-[15px]">
-                                                <div className="w-[300px]">
+                                                <div className="w-[300px] col-img">
                                                     <img src={product?.images[0]} alt="product-img" className="object-contain w-full h-full" />
                                                 </div>
                                                 <p className="text-[14px] font-sans text-gray-700 min-w-[100% - 300px ]">{product?.description}</p>
@@ -64,8 +64,8 @@ function WishlistProducts() {
                                                         toast.success("Added to Cart successfully");
                                                     }}
                                                 >
-                                                    add to card
-                                                    <LuShoppingCart className="w-[20px] h-[20px] text-whiteColor" />
+                                                    <p>add to card</p>
+                                                    <LuShoppingCart className="w-[20px] h-[20px] text-whiteColor icon-cart" />
                                                 </button>
                                             </td>
                                         </tr>

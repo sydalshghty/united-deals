@@ -1,7 +1,7 @@
 import { FaPlus, FaMinus } from "react-icons/fa6";
 import { FaCheck } from "react-icons/fa";
 import "./all-products.css";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 import { OrbitProgress } from "react-loading-indicators";
@@ -9,8 +9,8 @@ import { useSearchParams } from "react-router-dom";
 function AllProducts() {
     const [searchParams] = useSearchParams();
     const category = searchParams.get("category");
-    
-    console.log({"category": category});
+
+    console.log({ "category": category });
 
     const [allProducts, setAllProducts] = useState([]);
     const [showCategory, setShowCategory] = useState(true);
@@ -63,11 +63,11 @@ function AllProducts() {
         filteredProducts.sort((a, b) => b.price - a.price);
     }
 
-   useEffect(() => {
-        if(category){
+    useEffect(() => {
+        if (category) {
             setSelectedCategory(category)
         }
-    },[category]);
+    }, [category]);
 
     return (
         <>
@@ -113,6 +113,11 @@ function AllProducts() {
                         >
                             <p className="text-[16px] text-darkColor font-medium capitalize">Price High To Low</p>
                         </div>
+                        <p className="text-[16px] text-darkColor font-medium capitalize cursor-pointer clear-filter"
+                            onClick={() => {
+                                setSelectedCategory(null);
+                            }}
+                        >clear filter</p>
                     </div>
                     <div className="flex flex-wrap h-full gap-5 all-products">
                         {filteredProducts.length === 0 ?
@@ -126,15 +131,15 @@ function AllProducts() {
                                         <Link to={`/Product/${product.id}`} key={product.id}
                                             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                                         >
-                                            <div className="h-full col-product w-[270px]">
+                                            <div className="h-full col-product">
                                                 <div className="content-img-product  bg-bgImgProduct rounded-[26px] mb-2 flex justify-center items-center flex-col relative cursor-pointer">
-                                                    <div className="flex items-center justify-center w-[204px] h-[266px] col-img">
+                                                    <div className="flex items-center justify-center col-img">
                                                         <img src={product?.images[0]} alt="product-img" className="object-contain w-full h-full" />
                                                     </div>
                                                 </div>
                                                 <div className="information-product">
                                                     <h3 className="title-product text-[18px] font-bold text-headingcolor mb-2 capitalize">
-                                                        {product.title.slice(0, 25)}
+                                                        {product.title.slice(0, 18)}
                                                     </h3>
                                                     <div className="col-rating flex gap-[6px] items-center mb-2">
                                                         <div className="flex items-center all-stars gap-[6px]">
@@ -146,7 +151,7 @@ function AllProducts() {
                                                                 <FaStar className="text-starColor" />
 
                                                             </div>
-                                                            <p className="text-[13px] text-gray900 font-bold">{product.rating}</p>
+
                                                         </div>
                                                         <p className="text-[13px] text-gray600">{`(${product.rating}Ratings)`}</p>
                                                     </div>

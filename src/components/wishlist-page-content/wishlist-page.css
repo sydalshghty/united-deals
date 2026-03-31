@@ -16,3 +16,45 @@
         margin-top: 10px;
     }
 }
+
+/*update changes*/
+@media (max-width: 1100px){
+    .wishlist-products .container table tbody .col-one,
+    .wishlist-products .container table thead .head-one{
+        width: 15%;
+    }
+    .wishlist-products .container table thead .last-tr{
+        display: none;
+    }
+    .wishlist-products .container table tbody .col-one .col-img{
+        width: 150px;
+    }
+    .wishlist-products .container table tbody .col-one p{
+        /*font-size: 12px;*/
+        display: none;
+    }
+    .wishlist-products .container table tbody .add-to-cart{
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+    }
+    .wishlist-products .container table tbody .add-to-cart p{
+        display: none;
+    }
+}
+
+@media (max-width: 520px){
+    .wishlist-products .container table thead td{
+        font-size: 10px;
+    }
+    .wishlist-products .container table tbody td{
+        font-size: 10px;
+    }
+    .wishlist-products .container table tbody .add-to-cart{
+        width: 25px;
+        height: 25px;
+    }
+    .wishlist-products .container table tbody .add-to-cart .icon-cart{
+        width: 15px;
+    }
+}
