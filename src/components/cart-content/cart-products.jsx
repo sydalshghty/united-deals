@@ -91,7 +91,7 @@ function CartProducts() {
                             <span className="text-sm font-bold text-textcolorPrimary">{`₹${totalPrice}`}</span>
                         </div>
                     </div>
-                    <Link to={`/customer-information`} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+                    <Link to={`/customer-information?totalPrice=${totalPrice}`} onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
                         <button className="shop-now w-full h-[52px] bg-bgshopnow pt-4 pb-4 pl-8 pr-8 rounded-lg flex justify-center items-center gap-2">
                             <img src={IconShopSummary} alt="icon-shop" />
                             <span className="text-sm font-medium text-white">Shop now</span>
