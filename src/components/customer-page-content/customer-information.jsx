@@ -2,40 +2,79 @@ import "./customer-information.css";
 import IconShopSummary from "../../assets/Icon-shop-summary.svg";
 import { FaCheck } from "react-icons/fa6";
 import { useSearchParams } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 function CustomerInformation() {
+    const navigate = useNavigate();
+
     const [searchParams] = useSearchParams();
     const totalPrice = searchParams.get("totalPrice");
 
+    const [email,setEmail] = useState("");
+    const [firstName,setFirstName] = useState("");
+    const [lastName,setLastName] = useState("");
+    const [address,setAddress] = useState("");
+    const [phone, setPhone] = useState("");
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log({
+            "E-mail": email,
+            "First-Name": firstName,
+            "Last-Name": lastName,
+            "Address": address,
+            "Phone": phone
+        });
+        localStorage.setItem("email", email);
+        localStorage.setItem("first-name", firstName);
+        localStorage.setItem("last-name", lastName);
+        localStorage.setItem("address", address);
+        localStorage.setItem("phone", phone);
+        navigate(`/paymant-shipping?totalPrice=${totalPrice}`)
+    }
+
     return (
-        <section className="customer-information">
-            <div className="container">
-                <form action="" method="post">
-                    <label htmlFor="">Customer Information</label>
-                    <div className="email-name-cols">
-                        <div className="col-email">
-                            <label htmlFor="">E-mail</label>
-                            <input type="text" name="E-mail" />
+        <section className="customer-information w-full h-full mb-10">
+            <div className="container min-w-[100%] h-full flex gap-[60px]">
+                <form  method="GET" className="w-[70%] flex flex-col gap-5">
+                    <label htmlFor="" className="text-[20px] font-bold text-textcolorPrimary capitalize">Customer Information</label>
+                    <div className="email-name-cols flex flex-col gap-3">
+                        <div className="col-email flex flex-col gap-1">
+                            <label htmlFor="" className="text-[14px] font-semibold text-colorPrice">E-mail</label>
+                            <input type="text" name="E-mail" value={email} required className="h-[40px] p-3 rounded-[4px] border-[1px] border-textColor outline-none"
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
                         </div>
-                        <div className="col-names">
-                            <div className="first-name">
-                                <label htmlFor="">First Name </label>
-                                <input type="text" name="first-name" />
+                        <div className="col-names flex gap-4 w-full">
+                            <div className="first-name flex flex-col gap-1 w-[50%]">
+                                <label htmlFor="" className="text-[14px] font-semibold text-colorPrice">First Name </label>
+                                <input type="text" name="first-name" value={firstName} required className="h-[40px] p-3 rounded-[4px] border-[1px] border-textColor outline-none"
+                                    onChange={(e) => setFirstName(e.target.value)}
+                                />
                             </div>
-                            <div className="last-name">
-                                <label htmlFor="">Last Name</label>
-                                <input type="text" name="last-name" />
+                            <div className="last-name flex flex-col gap-1 w-[50%]">
+                                <label htmlFor="" className="text-[14px] font-semibold text-colorPrice">Last Name</label>
+                                <input type="text" name="last-name" value={lastName} required className="h-[40px] p-3 rounded-[4px] border-[1px] border-textColor outline-none"
+                                    onChange={(e) => setLastName(e.target.value)}
+                                />
                             </div>
                         </div>
                     </div>
-                    <div className="Shipping-Address-cols">
-                        <label htmlFor="">Shipping Address</label>
-                        <div className="col-Address">
-                            <label htmlFor="">Address</label>
-                            <input type="text" name="Address" />
-                        </div>
-                        <div className="col-Phone">
-                            <label htmlFor="">Phone Number</label>
-                            <input type="number" name="Phone Number" />
+                    <div className="Shipping-Address-cols flex flex-col gap-5">
+                        <label htmlFor="" className="text-[16px] font-bold text-textcolorPrimary capitalize">Shipping Address</label>
+                        <div className="address-phone-col flex flex-col gap-3">
+                            <div className="col-Address flex flex-col gap-1">
+                                <label htmlFor="" className="text-[14px] font-semibold text-colorPrice">Address</label>
+                                <input type="text" name="Address" value={address} required className="h-[40px] p-3 rounded-[4px] border-[1px] border-textColor outline-none"
+                                    onChange={(e) => setAddress(e.target.value)}
+                                />
+                            </div>
+                            <div className="col-Phone flex flex-col gap-1">
+                                <label htmlFor="" className="text-[14px] font-semibold text-colorPrice">Phone Number</label>
+                                <input type="tel" name="Phone Number" value={phone} required className="h-[40px] p-3 rounded-[4px] border-[1px] border-textColor outline-none"
+                                    onChange={(e) => setPhone(e.target.value)}
+                                />
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -72,7 +111,9 @@ function CustomerInformation() {
                             <span className="text-sm font-bold text-textcolorPrimary">{`₹${totalPrice}`}</span>
                         </div>
                     </div>
-                    <button className="shop-now w-full h-[52px] bg-bgshopnow pt-4 pb-4 pl-8 pr-8 rounded-lg flex justify-center items-center gap-2">
+                    <button className="shop-now w-full h-[52px] bg-bgshopnow pt-4 pb-4 pl-8 pr-8 rounded-lg flex justify-center items-center gap-2"
+                        onClick={handleSubmit}
+                    >
                         <img src={IconShopSummary} alt="icon-shop" />
                         <span className="text-sm font-medium text-white">NEXT</span>
                     </button>

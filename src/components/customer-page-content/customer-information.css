@@ -1,0 +1,22 @@
+
+@media (max-width: 992px){
+    .customer-information{
+        margin-bottom: 20px;
+        }
+    .customer-information .container{
+        flex-direction: column;
+        gap: 20px;
+    }
+    .customer-information .container form{
+        width: 100%;
+    }
+}
+@media (max-width: 520px){
+    .customer-information .container form .col-names{
+        flex-direction: column;
+    }
+    .customer-information .container form .col-names .first-name,
+    .customer-information .container form .col-names .last-name{
+        width: 100%;
+    }
+} 

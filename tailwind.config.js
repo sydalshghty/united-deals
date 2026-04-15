@@ -54,7 +54,8 @@ export default {
         darkColor: "#13101E",
         checkcolor: "#626262",
         bgAddToCart: "#1877F2",
-        grayColorLink: "#A8A29E"
+        grayColorLink: "#A8A29E",
+        bgMethod: "#E9E9E9",
       }
     },
   },

@@ -72,7 +72,9 @@ body {
     .cart-page-content,
     .all-products-page,
     .wishlist-page-content,
-    .Customer-page-content{
+    .Customer-page-content,
+    .product-confirmation-page,
+    .paymant-page{
         margin-top: 125px;
     }
     .top-button{

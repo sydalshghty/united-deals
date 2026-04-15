@@ -1,0 +1,17 @@
+.paymant-method .container .paymant-method .all-method-paymant .col-method.active{
+    background-color: #E9E9E9;
+}
+.paymant-method .container .paymant-method .all-method-paymant .col-method .check-method div span.active{
+    border-width: 6px;
+    border-color: #1877F2;
+}
+@media (max-width: 992px){
+    .paymant-method{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .paymant-method .container{
+        flex-direction: column;
+        gap: 15px;
+    }
+}
