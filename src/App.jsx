@@ -10,6 +10,7 @@ import NavbarBottom from "./components/navbar-bottom";
 import CustomerPage from "./pages/customer-page";
 import PaymentPage from "./pages/paymant-page";
 import ProductConfirmation from "./pages/product-confirmation-page";
+import OrderSuccessfully from "./pages/order-successfully";
 function App() {
   return (
     <>
@@ -22,6 +23,7 @@ function App() {
         <Route path="customer-information" element={<CustomerPage />} />
         <Route path="paymant-shipping" element={<PaymentPage/>}/>
         <Route path="product-confirmation" element={<ProductConfirmation/>}/>
+        <Route path="order-successfully" element={<OrderSuccessfully/>} />
       </Routes>
       <Toaster position="top-right" />
       <TopButton />

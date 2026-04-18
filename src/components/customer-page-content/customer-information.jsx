@@ -15,22 +15,19 @@ function CustomerInformation() {
     const [lastName,setLastName] = useState("");
     const [address,setAddress] = useState("");
     const [phone, setPhone] = useState("");
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log({
-            "E-mail": email,
-            "First-Name": firstName,
-            "Last-Name": lastName,
-            "Address": address,
-            "Phone": phone
-        });
-        localStorage.setItem("email", email);
-        localStorage.setItem("first-name", firstName);
-        localStorage.setItem("last-name", lastName);
-        localStorage.setItem("address", address);
-        localStorage.setItem("phone", phone);
-        navigate(`/paymant-shipping?totalPrice=${totalPrice}`)
+    const [error,setError] = useState(null);
+    
+    const handleSubmit = () => {
+        if(email === "" || firstName === "" || lastName === "" || address === "" || phone === ""){
+            setError("*pleace fill all the field")
+        }
+        else{
+            localStorage.setItem("customer-information", 
+                JSON.stringify({"firstName": firstName, "lastName": lastName, "email": email, "phone": phone, "address": address}));
+            localStorage.setItem("totalPrice", totalPrice);
+            setError("");
+            navigate(`/paymant-shipping`);
+        }
     }
 
     return (
@@ -41,7 +38,7 @@ function CustomerInformation() {
                     <div className="email-name-cols flex flex-col gap-3">
                         <div className="col-email flex flex-col gap-1">
                             <label htmlFor="" className="text-[14px] font-semibold text-colorPrice">E-mail</label>
-                            <input type="text" name="E-mail" value={email} required className="h-[40px] p-3 rounded-[4px] border-[1px] border-textColor outline-none"
+                            <input type="email" name="E-mail" value={email} required className="h-[40px] p-3 rounded-[4px] border-[1px] border-textColor outline-none"
                                 onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
@@ -77,6 +74,7 @@ function CustomerInformation() {
                             </div>
                         </div>
                     </div>
+                    <p className="p-error text-[15px] capitalize text-red-500 font-bold">{error}</p>
                 </form>
                 <div className="shadow-sm order-summary bg-bgSummary w-[309px] h-[365px] pt-5 pb-5 pl-10 pr-10 rounded-lg flex flex-col gap-7">
                     <h2 className="text-base font-bold text-textcolorPrimary">Order Summary</h2>
@@ -112,12 +110,13 @@ function CustomerInformation() {
                         </div>
                     </div>
                     <button className="shop-now w-full h-[52px] bg-bgshopnow pt-4 pb-4 pl-8 pr-8 rounded-lg flex justify-center items-center gap-2"
-                        onClick={handleSubmit}
+                        onClick={() => {
+                            handleSubmit();
+                        }}
                     >
                         <img src={IconShopSummary} alt="icon-shop" />
                         <span className="text-sm font-medium text-white">NEXT</span>
                     </button>
-
                 </div>
             </div>
         </section>

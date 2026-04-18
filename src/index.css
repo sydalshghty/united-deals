@@ -82,3 +82,8 @@ body {
     }
 }
 
+@media (max-width: 1020px){
+    .top-button .content-btn{
+        bottom: 110px;
+    }
+}

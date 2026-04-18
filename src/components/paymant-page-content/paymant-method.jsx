@@ -4,9 +4,10 @@ import bitcoinImg from "../../assets/payment-bitcoin.svg";
 import { useState } from "react";
 import IconShopSummary from "../../assets/Icon-shop-summary.svg";
 import { FaCheck } from "react-icons/fa6";
-import { Link, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./paymant-method.css";
 function PaymantMethod(){
+    const navigate = useNavigate("")
     const allMethods= [
         {id: 1, title: "PayPal", img: paypalImg, description: "PayPal is a trusted online payment platform that allows individuals and businesses to securely send and receive money electronically"},
         {id: 2, title: "Mastercard", img: mastercardImg, description: "Mastercard is a trusted online payment platform that allows individuals and businesses to securely send and receive money electronically"},
@@ -14,10 +15,19 @@ function PaymantMethod(){
     ]
 
     const [paymant,setPaymant] = useState(null);
+    const [error,setError] = useState("");
+    const totalPrice = localStorage.getItem("totalPrice");
 
-    const [searchParams] = useSearchParams();
-    const totalPrice = searchParams.get("totalPrice")
-
+    const handlePaymant = () => {
+        if(paymant === null){
+            setError("*Please choose a payment method")
+        }else{
+            localStorage.setItem("paymantMethod", paymant);
+            setError("")
+            navigate(`/product-confirmation`);
+        }
+    }
+    
     return(
         <section className="paymant-method w-full h-full mt-[40px] mb-[40px]">
             <div className="container min-w-[100%] h-full flex justify-between">
@@ -46,6 +56,7 @@ function PaymantMethod(){
                            )
                         })}
                     </div>
+                    <p className="capitalize text-red-500 text-[15px] font-bold mt-3">{error}</p>
                 </div>
                 <div className="shadow-sm order-summary bg-bgSummary w-[309px] h-[365px] pt-5 pb-5 pl-10 pr-10 rounded-lg flex flex-col gap-7">
                     <h2 className="text-base font-bold text-textcolorPrimary">Order Summary</h2>
@@ -80,13 +91,14 @@ function PaymantMethod(){
                             <span className="text-sm font-bold text-textcolorPrimary">{`₹${totalPrice}`}</span>
                         </div>
                     </div>
-                    <Link to={`/product-confirmation`}>
-                        <button className="shop-now w-full h-[52px] bg-bgshopnow pt-4 pb-4 pl-8 pr-8 rounded-lg flex justify-center items-center gap-2"
-                        >
-                            <img src={IconShopSummary} alt="icon-shop" />
-                            <span className="text-sm font-medium text-white">NEXT</span>
-                        </button>
-                    </Link>
+                    <button className="shop-now w-full h-[52px] bg-bgshopnow pt-4 pb-4 pl-8 pr-8 rounded-lg flex justify-center items-center gap-2"
+                        onClick={() => {
+                            handlePaymant()
+                        }}
+                    >
+                        <img src={IconShopSummary} alt="icon-shop" />
+                        <span className="text-sm font-medium text-white">NEXT</span>
+                    </button>
                 </div>
             </div>
         </section>
